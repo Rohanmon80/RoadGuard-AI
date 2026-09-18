@@ -85,33 +85,29 @@ function createMarkerIcon(item, isBus = false) {
 }
 
 export default function MapView({
-  incidents = [],
-  buses = [],
-  center = [22.5726, 88.3639],
-  zoom = 13,
-  selectedIncident = null,
-  selectedLocation = null,
-  onMarkerClick,
-  onBusClick,
-  height = '100%',
-  showControls = true,
-  interactive = true,
+  incidents = [], buses = [], routes = [], selectedIncident = null, selectedLocation = null,
+  userLocation = null, onMarkerClick, onBusClick, height = '100%', center = null, zoom = 13, showControls = true,
 }) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const markersLayerRef = useRef(null);
   const busesLayerRef = useRef(null);
+  const userLocationLayerRef = useRef(null);
   const markerMapRef = useRef(new Map());
 
   // Initialize Map
   useEffect(() => {
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
-    const map = L.map(mapContainerRef.current, {
-      center,
-      zoom,
-      zoomControl: false,
-    });
+    const initialCenter =
+      Array.isArray(userLocation) && userLocation.length === 2
+        ? userLocation
+        : Array.isArray(center) && center.length === 2
+          ? center
+          : [20, 0];
+    const initialZoom = Array.isArray(userLocation) && userLocation.length === 2 ? Math.max(zoom, 15) : zoom;
+
+    const map = L.map(mapContainerRef.current, { center: initialCenter, zoom: initialZoom, zoomControl: false });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors | BusSense AI',
@@ -124,11 +120,15 @@ export default function MapView({
 
     markersLayerRef.current = L.layerGroup().addTo(map);
     busesLayerRef.current = L.layerGroup().addTo(map);
+    userLocationLayerRef.current = L.layerGroup().addTo(map);
     mapInstanceRef.current = map;
 
     return () => {
       map.remove();
       mapInstanceRef.current = null;
+      markersLayerRef.current = null;
+      busesLayerRef.current = null;
+      userLocationLayerRef.current = null;
     };
   }, []);
 
@@ -158,15 +158,15 @@ export default function MapView({
             </span>
           </div>
           <div style="font-size: 11px; margin-bottom: 6px; color: #cbd5e1;">
-            ${inc.description || 'Automated mobile edge detection.'}
+            ${inc.description || 'No description attached.'}
           </div>
           <div style="display: flex; align-items: center; justify-content: space-between; font-family: monospace; font-size: 10px; color: #38bdf8; margin-bottom: 6px; background: rgba(56,189,248,0.1); padding: 3px 6px; border-radius: 4px;">
             <span>📍 ${inc.lat.toFixed(4)}, ${inc.lng.toFixed(4)}</span>
-            <span>Bus: <strong>${inc.bus_id || inc.busId || 'BUS-102'}</strong></span>
+            <span>Bus: <strong>${inc.bus_id || inc.busId || '—'}</strong></span>
           </div>
           <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid rgba(148,163,184,0.2); padding-top: 5px;">
-            <span>Status: <strong style="color: #e2e8f0;">${inc.status || 'open'}</strong></span>
-            <span>Conf: <strong style="color: #38bdf8;">${Math.round((inc.confidence || 0.9) * 100)}%</strong></span>
+            <span>Status: <strong style="color: #e2e8f0;">${inc.status || '—'}</strong></span>
+            <span>Conf: <strong style="color: #38bdf8;">${Number.isFinite(Number(inc.confidence)) ? Math.round(Number(inc.confidence) * 100) + '%' : '—'}</strong></span>
           </div>
         </div>
       `;
@@ -207,13 +207,13 @@ export default function MapView({
             <span style="font-family: monospace; font-size: 10px; color: #94a3b8;">${bus.speedKph || 0} km/h</span>
           </div>
           <div style="font-size: 11px; font-weight: 500; color: #f1f5f9; margin-bottom: 2px;">
-            ${bus.route || 'Urban Express Line'}
+            ${bus.route || 'Route not configured'}
           </div>
           <div style="font-size: 10px; color: #94a3b8; margin-bottom: 6px;">
-            Corridor: <strong style="color: #e2e8f0;">${bus.corridor || 'Central'}</strong>
+            Corridor: <strong style="color: #e2e8f0;">${bus.corridor || 'Route not configured'}</strong>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; background: rgba(15,23,42,0.6); padding: 5px; border-radius: 4px; border: 1px solid rgba(148,163,184,0.15); margin-bottom: 4px;">
-            <div>Cam: <strong style="color: #38bdf8;">${bus.camera || 'Active'}</strong></div>
+            <div>Cam: <strong style="color: #38bdf8;">${bus.camera || '—'}</strong></div>
             <div>Occupancy: <strong style="color: #f59e0b;">${bus.occupancy || 0}%</strong></div>
             <div>Driver: <span style="color: #cbd5e1;">${bus.driver || 'N/A'}</span></div>
             <div>Detections: <strong style="color: #4ade80;">${bus.detectionsToday || 0}</strong></div>
@@ -233,7 +233,28 @@ export default function MapView({
     });
   }, [buses, onBusClick]);
 
-  // Handle FlyTo on Selected Incident or Location
+  // Current browser location marker
+  useEffect(() => {
+    if (!mapInstanceRef.current || !userLocationLayerRef.current) return;
+    const layer = userLocationLayerRef.current;
+    layer.clearLayers();
+    if (!Array.isArray(userLocation) || userLocation.length !== 2 ||
+        !Number.isFinite(Number(userLocation[0])) || !Number.isFinite(Number(userLocation[1]))) return;
+
+    const lat = Number(userLocation[0]);
+    const lng = Number(userLocation[1]);
+    const accuracyCircle = L.circle([lat, lng], { radius: 35, color: '#2563eb', weight: 1, opacity: 0.35, fillColor: '#2563eb', fillOpacity: 0.08, interactive: false });
+    const locationIcon = L.divIcon({
+      html: `<div style="position:relative;width:30px;height:30px;display:flex;align-items:center;justify-content:center;"><div style="position:absolute;inset:0;border-radius:50%;background:rgba(37,99,235,0.20);animation:radar-pulse 2s infinite;"></div><div style="width:16px;height:16px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 1px 8px rgba(0,0,0,0.35);position:relative;z-index:2;"></div></div>`,
+      className: 'current-location-marker', iconSize: [30, 30], iconAnchor: [15, 15],
+    });
+    const marker = L.marker([lat, lng], { icon: locationIcon, zIndexOffset: 1000, interactive: false })
+      .bindTooltip('Current browser location', { direction: 'top', offset: [0, -12], opacity: 0.9 });
+    layer.addLayer(accuracyCircle);
+    layer.addLayer(marker);
+  }, [userLocation]);
+
+  // Handle FlyTo on Selected Incident, Selected Location, or Current GPS
   useEffect(() => {
     if (!mapInstanceRef.current) return;
 
@@ -246,11 +267,12 @@ export default function MapView({
         setTimeout(() => marker.openPopup(), 400);
       }
     } else if (selectedLocation && Array.isArray(selectedLocation) && selectedLocation.length === 2) {
-      mapInstanceRef.current.flyTo(selectedLocation, 16, {
-        duration: 1.2,
-      });
+      mapInstanceRef.current.flyTo(selectedLocation, 16, { duration: 1.2 });
+    } else if (Array.isArray(userLocation) && userLocation.length === 2 &&
+               Number.isFinite(Number(userLocation[0])) && Number.isFinite(Number(userLocation[1]))) {
+      mapInstanceRef.current.flyTo([Number(userLocation[0]), Number(userLocation[1])], Math.max(zoom, 15), { duration: 1.2 });
     }
-  }, [selectedIncident, selectedLocation]);
+  }, [selectedIncident, selectedLocation, userLocation, zoom]);
 
   return (
     <div className="relative w-full h-full rounded-xl overflow-hidden" style={{ border: '1px solid var(--border)' }}>

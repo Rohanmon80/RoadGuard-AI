@@ -3,11 +3,17 @@ import { Moon, Sun, Bus, Bell, Cpu, Satellite } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import { useTheme } from '../context/ThemeContext';
 import { useSystem } from '../context/SystemContext';
-import { FLEET_BUSES } from '../data/fleet';
+import { fetchBuses } from '../api';
 
 export default function Settings() {
   const { theme, setTheme } = useTheme();
   const { busId, setBusId, notificationsEnabled, setNotify, wsConnected, gpsLocked } = useSystem();
+  const [buses, setBuses] = useState([]);
+
+  // Fetch buses on mount
+  useEffect(() => {
+    fetchBuses().then(setBuses).catch(() => setBuses([]));
+  }, []);
 
   return (
     <div className="space-y-6 pb-10">
@@ -58,9 +64,17 @@ export default function Settings() {
             The selected bus ID is shown in the top bar and persisted in localStorage.
           </p>
           <select value={busId} onChange={(e) => setBusId(e.target.value)} className="field p-2.5 text-sm">
-            {FLEET_BUSES.map((b) => (
-              <option key={b.id} value={b.id}>{b.id} — {b.route}</option>
-            ))}
+            {buses.length > 0 ? (
+              buses.map((bus) => (
+                <option key={bus.bus_number} value={bus.bus_number}>
+                  {bus.bus_number} — {bus.route || 'Not configured'}
+                </option>
+              ))
+            ) : (
+              <option value="" disabled>
+                No buses configured
+              </option>
+            )}
           </select>
         </div>
 

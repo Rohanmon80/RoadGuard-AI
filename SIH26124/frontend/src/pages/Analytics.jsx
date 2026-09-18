@@ -151,10 +151,10 @@ export default function Analytics() {
             </thead>
             <tbody>
               {[
-                { name: 'MG Road Corridor', match: (i) => i.lat > 22.57 },
-                { name: 'Park Street Urban Zone', match: (i) => i.lat <= 22.57 && i.lat > 22.54 },
-                { name: 'EM Bypass Arterial', match: (i) => i.lng > 88.39 },
-                { name: 'Howrah Approach', match: (i) => i.lng <= 88.35 },
+                { name: 'Zone N (lat>22.5)', match: (i) => i.lat > 22.5 },
+                { name: 'Zone S (lat<=22.5)', match: (i) => i.lat <= 22.5 },
+                { name: 'Zone E (lng>88.3)', match: (i) => i.lng > 88.3 },
+                { name: 'Zone W (lng<=88.3)', match: (i) => i.lng <= 88.3 },
               ].map((row) => {
                 const rows = incidents.filter(row.match);
                 const crit = rows.filter((i) => i.severity === 'CRITICAL').length;

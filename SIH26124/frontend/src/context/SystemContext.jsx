@@ -5,17 +5,15 @@ const BUS_KEY = 'bussense-bus-id';
 const NOTIFY_KEY = 'bussense-notify';
 const GPS_MANUAL_KEY = 'bussense-gps-manual';
 
-// Neutral demo coords for laptop testing (not a personal location)
-const DEMO_LAT = 22.5726;
-const DEMO_LNG = 88.3639;
+// No hardcoded demo coordinates
 
 const SystemContext = createContext(null);
 
 export function getStoredBusId() {
   try {
-    return localStorage.getItem(BUS_KEY) || 'BUS-07';
+    return localStorage.getItem(BUS_KEY) || null;
   } catch {
-    return 'BUS-07';
+    return null;
   }
 }
 
@@ -49,7 +47,7 @@ export function SystemProvider({ children }) {
   // Real GPS state (browser geolocation + manual/demo fallback)
   const [gpsLat, setGpsLat] = useState(null);
   const [gpsLng, setGpsLng] = useState(null);
-  const [gpsSource, setGpsSource] = useState('seeking'); // browser | manual | demo | seeking | denied | unavailable
+  const [gpsSource, setGpsSource] = useState('seeking'); // browser | manual | seeking | denied | unavailable
   const [gpsError, setGpsError] = useState(null);
   const [gpsLocked, setGpsLocked] = useState(false);
   const [manualOverride, setManualOverride] = useState(() => loadManualGps());
@@ -82,7 +80,7 @@ export function SystemProvider({ children }) {
     if (manualOverride) {
       setGpsLat(manualOverride.lat);
       setGpsLng(manualOverride.lng);
-      setGpsSource(manualOverride.demo ? 'demo' : 'manual');
+      setGpsSource(manualOverride ? 'manual' : 'seeking');
       setGpsLocked(true);
       setGpsError(null);
       try {
@@ -99,11 +97,10 @@ export function SystemProvider({ children }) {
 
     if (!navigator.geolocation) {
       setGpsSource('unavailable');
-      setGpsError('Geolocation not supported — using demo fallback');
-      setGpsLat(DEMO_LAT);
-      setGpsLng(DEMO_LNG);
-      setGpsSource('demo');
-      setGpsLocked(true);
+      setGpsError('Geolocation not supported in this browser');
+      setGpsLat(null);
+      setGpsLng(null);
+      setGpsLocked(false);
       return undefined;
     }
 
@@ -122,16 +119,14 @@ export function SystemProvider({ children }) {
       const denied = err?.code === 1;
       setGpsError(
         denied
-          ? 'Location permission denied — use manual/demo GPS'
-          : 'GPS unavailable — use manual/demo GPS'
+          ? 'Location permission denied — please allow GPS access'
+          : 'GPS unavailable — please try again'
       );
       setGpsSource(denied ? 'denied' : 'unavailable');
       setGpsLocked(false);
-      // Soft demo fallback so uploads still get coords
-      setGpsLat(DEMO_LAT);
-      setGpsLng(DEMO_LNG);
-      setGpsSource('demo');
-      setGpsLocked(true);
+      // Do NOT silently switch to demo coordinates
+      // Keep previous real coords if any; do not overwrite with demo
+      // Leave gpsLat and gpsLng as they are (null if not set, or last known)
     };
 
     const watchId = navigator.geolocation.watchPosition(onSuccess, onError, {
@@ -144,14 +139,19 @@ export function SystemProvider({ children }) {
   }, [manualOverride]);
 
   const setBusId = useCallback((id) => {
-    const next = (id || 'BUS-07').toUpperCase();
-    setBusIdState(next);
-    try {
+  const next = id ? id.toUpperCase() : null;
+  setBusIdState(next);
+
+  try {
+    if (next) {
       localStorage.setItem(BUS_KEY, next);
-    } catch {
-      /* ignore */
+    } else {
+      localStorage.removeItem(BUS_KEY);
     }
-  }, []);
+  } catch {
+    /* ignore */
+  }
+}, []);
 
   const setNotify = useCallback((enabled) => {
     setNotificationsEnabled(enabled);
@@ -169,10 +169,7 @@ export function SystemProvider({ children }) {
     setManualOverride({ lat: latN, lng: lngN, demo });
   }, []);
 
-  const useDemoGps = useCallback(() => {
-    setManualGps(DEMO_LAT, DEMO_LNG, { demo: true });
-  }, [setManualGps]);
-
+  
   const clearManualGps = useCallback(() => {
     setManualOverride(null);
     try {
@@ -185,6 +182,39 @@ export function SystemProvider({ children }) {
     setGpsLocked(false);
     setGpsSource('seeking');
     setGpsError(null);
+  }, []);
+
+  const getCurrentPosition = useCallback(async () => {
+    setGpsError(null);
+    setGpsSource('seeking');
+    if (!navigator.geolocation) {
+      setGpsError('Geolocation not supported in this browser');
+      return;
+    }
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setGpsLat(pos.coords.latitude);
+          setGpsLng(pos.coords.longitude);
+          setGpsSource('browser');
+          setGpsLocked(true);
+          setGpsError(null);
+          resolve(pos);
+        },
+        (err) => {
+          const denied = err?.code === 1;
+          setGpsError(
+            denied
+              ? 'Location permission denied — please allow GPS access'
+              : 'GPS unavailable — please try again'
+          );
+          setGpsSource(denied ? 'denied' : 'unavailable');
+          setGpsLocked(false);
+          reject(err);
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+      );
+    });
   }, []);
 
   const unreadCount = alerts.filter((a) => !a.read).length;
@@ -211,19 +241,20 @@ export function SystemProvider({ children }) {
   }, [gpsSource]);
 
   const value = useMemo(
-    () => ({
-      wsConnected,
-      busId,
-      setBusId,
-      gpsLocked,
-      gpsLat,
-      gpsLng,
-      gpsSource,
-      gpsError,
-      gpsModeLabel,
+  () => ({
+
+    wsConnected,
+    busId,
+    setBusId,
+    gpsLocked,
+    gpsLat,
+    gpsLng,
+    gpsSource,
+    gpsError,
+    gpsModeLabel,
       setManualGps,
-      useDemoGps,
       clearManualGps,
+      getCurrentPosition,
       notificationsEnabled,
       setNotify,
       alerts,
@@ -232,25 +263,25 @@ export function SystemProvider({ children }) {
       markAllRead,
     }),
     [
-      wsConnected,
-      busId,
-      setBusId,
-      gpsLocked,
-      gpsLat,
-      gpsLng,
-      gpsSource,
-      gpsError,
-      gpsModeLabel,
-      setManualGps,
-      useDemoGps,
-      clearManualGps,
-      notificationsEnabled,
-      setNotify,
-      alerts,
-      lastEvent,
-      unreadCount,
-      markAllRead,
-    ]
+  wsConnected,
+  busId,
+  setBusId,
+  gpsLocked,
+  gpsLat,
+  gpsLng,
+  gpsSource,
+  gpsError,
+  gpsModeLabel,
+  setManualGps,
+  clearManualGps,
+  getCurrentPosition,
+  notificationsEnabled,
+  setNotify,
+  alerts,
+  lastEvent,
+  unreadCount,
+  markAllRead,
+]
   );
 
   return <SystemContext.Provider value={value}>{children}</SystemContext.Provider>;

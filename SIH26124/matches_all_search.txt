@@ -1,0 +1,1062 @@
+=== SEARCHING ALL PATTERNS ACROSS FRONTEND AND BACKEND ===
+
+--- Kolkata ---
+No matches
+
+--- 22.5726 ---
+frontend/src/components/MapView.jsx-88-  incidents = [],
+frontend/src/components/MapView.jsx-89-  buses = [],
+frontend/src/components/MapView.jsx:90:  center = [22.5726, 88.3639],
+frontend/src/components/MapView.jsx-91-  zoom = 13,
+frontend/src/components/MapView.jsx-92-  selectedIncident = null,
+--
+frontend/src/pages/Incidents.jsx-23-    type: 'pothole',
+frontend/src/pages/Incidents.jsx-24-    severity: 'HIGH',
+frontend/src/pages/Incidents.jsx:25:    lat: 22.5726,
+frontend/src/pages/Incidents.jsx-26-    lng: 88.3639,
+frontend/src/pages/Incidents.jsx-27-    description: '',
+--
+frontend/src/pages/Incidents.jsx-99-      });
+frontend/src/pages/Incidents.jsx-100-      setShowCreateModal(false);
+frontend/src/pages/Incidents.jsx:101:      setCreateForm({ type: 'pothole', severity: 'HIGH', lat: 22.5726, lng: 88.3639, description: '' });
+frontend/src/pages/Incidents.jsx-102-    } catch (err) {
+frontend/src/pages/Incidents.jsx-103-      alert('Failed to create incident: ' + err.message);
+
+--- 88.3639 ---
+frontend/src/components/MapView.jsx-88-  incidents = [],
+frontend/src/components/MapView.jsx-89-  buses = [],
+frontend/src/components/MapView.jsx:90:  center = [22.5726, 88.3639],
+frontend/src/components/MapView.jsx-91-  zoom = 13,
+frontend/src/components/MapView.jsx-92-  selectedIncident = null,
+--
+frontend/src/pages/Incidents.jsx-24-    severity: 'HIGH',
+frontend/src/pages/Incidents.jsx-25-    lat: 22.5726,
+frontend/src/pages/Incidents.jsx:26:    lng: 88.3639,
+frontend/src/pages/Incidents.jsx-27-    description: '',
+frontend/src/pages/Incidents.jsx-28-  });
+--
+frontend/src/pages/Incidents.jsx-99-      });
+frontend/src/pages/Incidents.jsx-100-      setShowCreateModal(false);
+frontend/src/pages/Incidents.jsx:101:      setCreateForm({ type: 'pothole', severity: 'HIGH', lat: 22.5726, lng: 88.3639, description: '' });
+frontend/src/pages/Incidents.jsx-102-    } catch (err) {
+frontend/src/pages/Incidents.jsx-103-      alert('Failed to create incident: ' + err.message);
+
+--- 22.5847 ---
+backend/test_pipeline.py-19-        files = {"file": ("sample_road_inspection.mp4", f, "video/mp4")}
+backend/test_pipeline.py-20-        data = {
+backend/test_pipeline.py:21:            "gps_lat": 22.5847,
+backend/test_pipeline.py-22-            "gps_lng": 88.3582,
+backend/test_pipeline.py-23-            "gps_end_lat": 22.5861,
+--
+backend/test_processor_direct.py-11-        filename="sample_road_inspection.mp4",
+backend/test_processor_direct.py-12-        original_name="sample_road_inspection.mp4",
+backend/test_processor_direct.py:13:        gps_lat=22.5847,
+backend/test_processor_direct.py-14-        gps_lng=88.3582,
+backend/test_processor_direct.py-15-        gps_end_lat=22.5861,
+
+--- 88.3582 ---
+backend/test_pipeline.py-20-        data = {
+backend/test_pipeline.py-21-            "gps_lat": 22.5847,
+backend/test_pipeline.py:22:            "gps_lng": 88.3582,
+backend/test_pipeline.py-23-            "gps_end_lat": 22.5861,
+backend/test_pipeline.py-24-            "gps_end_lng": 88.3690
+--
+backend/test_processor_direct.py-12-        original_name="sample_road_inspection.mp4",
+backend/test_processor_direct.py-13-        gps_lat=22.5847,
+backend/test_processor_direct.py:14:        gps_lng=88.3582,
+backend/test_processor_direct.py-15-        gps_end_lat=22.5861,
+backend/test_processor_direct.py-16-        gps_end_lng=88.3690
+
+--- BUS-102 ---
+frontend/src/components/MapView.jsx-163-          <div style="display: flex; align-items: center; justify-content: space-between; font-family: monospace; font-size: 10px; color: #38bdf8; margin-bottom: 6px; background: rgba(56,189,248,0.1); padding: 3px 6px; border-radius: 4px;">
+frontend/src/components/MapView.jsx-164-            <span>📍 ${inc.lat.toFixed(4)}, ${inc.lng.toFixed(4)}</span>
+frontend/src/components/MapView.jsx:165:            <span>Bus: <strong>${inc.bus_id || inc.busId || 'BUS-102'}</strong></span>
+frontend/src/components/MapView.jsx-166-          </div>
+frontend/src/components/MapView.jsx-167-          <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid rgba(148,163,184,0.2); padding-top: 5px;">
+
+--- BUS-07 ---
+No matches
+
+--- BUS-19 ---
+No matches
+
+--- BUS-12 ---
+No matches
+
+--- BUS-03 ---
+No matches
+
+--- BUS-08 ---
+No matches
+
+--- MG Road Express Corridor ---
+No matches
+
+--- Park Street Urban Zone ---
+No matches
+
+--- Howrah Bridge Approach ---
+No matches
+
+--- Kolkata Metro Grid ---
+No matches
+
+--- 14:00 ---
+No matches
+
+--- 141 ---
+No matches
+
+--- 282 ---
+No matches
+
+--- 51 ---
+Binary file frontend/src/assets/hero.png matches
+--
+frontend/src/assets/typescript.svg:1:<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="32" height="32" viewBox="0 0 256 256"><path fill="#007ACC" d="M0 128v128h256V0H0z"/><path fill="#FFF" d="m56.612 128.85l-.081 10.483h33.32v94.68h23.568v-94.68h33.321v-10.28c0-5.69-.122-10.444-.284-10.566c-.122-.162-20.4-.244-44.983-.203l-44.74.122l-.121 10.443Zm149.955-10.742c6.501 1.625 11.459 4.51 16.01 9.224c2.357 2.52 5.851 7.111 6.136 8.208c.08.325-11.053 7.802-17.798 11.988c-.244.162-1.22-.894-2.317-2.52c-3.291-4.795-6.745-6.867-12.028-7.233c-7.76-.528-12.759 3.535-12.718 10.321c0 1.992.284 3.17 1.097 4.795c1.707 3.536 4.876 5.649 14.832 9.956c18.326 7.883 26.168 13.084 31.045 20.48c5.445 8.249 6.664 21.415 2.966 31.208c-4.063 10.646-14.14 17.879-28.323 20.276c-4.388.772-14.79.65-19.504-.203c-10.28-1.828-20.033-6.908-26.047-13.572c-2.357-2.6-6.949-9.387-6.664-9.874c.122-.163 1.178-.813 2.356-1.504c1.138-.65 5.446-3.129 9.509-5.485l7.355-4.267l1.544 2.276c2.154 3.29 6.867 7.801 9.712 9.305c8.167 4.307 19.383 3.698 24.909-1.26c2.357-2.153 3.332-4.388 3.332-7.68c0-2.966-.366-4.266-1.91-6.501c-1.99-2.845-6.054-5.242-17.595-10.24c-13.206-5.69-18.895-9.224-24.096-14.832c-3.007-3.25-5.852-8.452-7.03-12.8c-.975-3.617-1.22-12.678-.447-16.335c2.723-12.76 12.353-21.659 26.25-24.3c4.51-.853 14.994-.528 19.424.569Z"/></svg>
+--
+frontend/src/assets/vite.svg:1:<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+
+--- 15 ---
+frontend/src/assets/typescript.svg:1:<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="32" height="32" viewBox="0 0 256 256"><path fill="#007ACC" d="M0 128v128h256V0H0z"/><path fill="#FFF" d="m56.612 128.85l-.081 10.483h33.32v94.68h23.568v-94.68h33.321v-10.28c0-5.69-.122-10.444-.284-10.566c-.122-.162-20.4-.244-44.983-.203l-44.74.122l-.121 10.443Zm149.955-10.742c6.501 1.625 11.459 4.51 16.01 9.224c2.357 2.52 5.851 7.111 6.136 8.208c.08.325-11.053 7.802-17.798 11.988c-.244.162-1.22-.894-2.317-2.52c-3.291-4.795-6.745-6.867-12.028-7.233c-7.76-.528-12.759 3.535-12.718 10.321c0 1.992.284 3.17 1.097 4.795c1.707 3.536 4.876 5.649 14.832 9.956c18.326 7.883 26.168 13.084 31.045 20.48c5.445 8.249 6.664 21.415 2.966 31.208c-4.063 10.646-14.14 17.879-28.323 20.276c-4.388.772-14.79.65-19.504-.203c-10.28-1.828-20.033-6.908-26.047-13.572c-2.357-2.6-6.949-9.387-6.664-9.874c.122-.163 1.178-.813 2.356-1.504c1.138-.65 5.446-3.129 9.509-5.485l7.355-4.267l1.544 2.276c2.154 3.29 6.867 7.801 9.712 9.305c8.167 4.307 19.383 3.698 24.909-1.26c2.357-2.153 3.332-4.388 3.332-7.68c0-2.966-.366-4.266-1.91-6.501c-1.99-2.845-6.054-5.242-17.595-10.24c-13.206-5.69-18.895-9.224-24.096-14.832c-3.007-3.25-5.852-8.452-7.03-12.8c-.975-3.617-1.22-12.678-.447-16.335c2.723-12.76 12.353-21.659 26.25-24.3c4.51-.853 14.994-.528 19.424.569Z"/></svg>
+--
+frontend/src/assets/vite.svg:1:<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+--
+frontend/src/components/MapView.jsx-21-          </svg>
+frontend/src/components/MapView.jsx-22-        </div>
+frontend/src/components/MapView.jsx:23:        <div style="position: absolute; bottom: -14px; background: rgba(15,23,42,0.9); border: 1px solid ${borderColor}; color: #e2e8f0; font-family: monospace; font-size: 9px; font-weight: 700; padding: 1px 4px; border-radius: 4px; white-space: nowrap; pointer-events: none; z-index: 3;">
+frontend/src/components/MapView.jsx-24-          ${item.id || 'BUS'}
+frontend/src/components/MapView.jsx-25-        </div>
+--
+frontend/src/components/MapView.jsx-213-            Corridor: <strong style="color: #e2e8f0;">${bus.corridor || 'Central'}</strong>
+frontend/src/components/MapView.jsx-214-          </div>
+frontend/src/components/MapView.jsx:215:          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; background: rgba(15,23,42,0.6); padding: 5px; border-radius: 4px; border: 1px solid rgba(148,163,184,0.15); margin-bottom: 4px;">
+frontend/src/components/MapView.jsx-216-            <div>Cam: <strong style="color: #38bdf8;">${bus.camera || 'Active'}</strong></div>
+frontend/src/components/MapView.jsx-217-            <div>Occupancy: <strong style="color: #f59e0b;">${bus.occupancy || 0}%</strong></div>
+--
+frontend/src/components/MapView.jsx-264-        <span className="w-2 h-2 rounded-full live-beacon" style={{ background: 'var(--ok)' }} />
+frontend/src/components/MapView.jsx-265-        <span className="font-semibold text-xs" style={{ color: 'var(--text)' }}>Urban GIS Network</span>
+frontend/src/components/MapView.jsx:266:        <span className="font-mono text-[10px] px-1.5 py-0.5 rounded" style={{ background: 'rgba(56,189,248,0.15)', color: 'var(--accent)' }}>
+frontend/src/components/MapView.jsx-267-          {buses.length} Buses · {incidents.length} Hazards
+frontend/src/components/MapView.jsx-268-        </span>
+--
+frontend/src/context/SystemContext.jsx-133-      enableHighAccuracy: true,
+frontend/src/context/SystemContext.jsx-134-      maximumAge: 10000,
+frontend/src/context/SystemContext.jsx:135:      timeout: 15000,
+frontend/src/context/SystemContext.jsx-136-    });
+frontend/src/context/SystemContext.jsx-137-
+--
+frontend/src/context/SystemContext.jsx-208-          reject(err);
+frontend/src/context/SystemContext.jsx-209-        },
+frontend/src/context/SystemContext.jsx:210:        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+frontend/src/context/SystemContext.jsx-211-      );
+frontend/src/context/SystemContext.jsx-212-    });
+--
+frontend/src/index.css-53-  --bg-input: #ffffff;
+frontend/src/index.css-54-  --bg-hover: rgba(8, 145, 178, 0.08);
+frontend/src/index.css:55:  --border: rgba(15, 23, 42, 0.12);
+frontend/src/index.css:56:  --border-strong: rgba(15, 23, 42, 0.22);
+frontend/src/index.css-57-  --text: #0f172a;
+frontend/src/index.css-58-  --text-muted: #475569;
+--
+frontend/src/index.css-60-  --accent: #0e7490;
+frontend/src/index.css-61-  --accent-2: #1d4ed8;
+frontend/src/index.css:62:  --ok: #15803d;
+frontend/src/index.css-63-  --warn: #b45309;
+frontend/src/index.css-64-  --crit: #dc2626;
+frontend/src/index.css:65:  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+frontend/src/index.css-66-  --map-overlay: rgba(255, 255, 255, 0.92);
+frontend/src/index.css-67-  --scrollbar-track: #e2e8f0;
+--
+frontend/src/index.css-126-
+frontend/src/index.css-127-  .glass-panel-hover {
+frontend/src/index.css:128:    transition: border-color 0.15s ease, background-color 0.15s ease;
+frontend/src/index.css-129-  }
+frontend/src/index.css-130-  .glass-panel-hover:hover {
+--
+frontend/src/index.css-155-    font-weight: 600;
+frontend/src/index.css-156-    border-radius: 0.5rem;
+frontend/src/index.css:157:    transition: background-color 0.15s ease;
+frontend/src/index.css-158-  }
+frontend/src/index.css-159-  .btn-primary:hover {
+--
+frontend/src/index.css-175-    border: 1px solid var(--border);
+frontend/src/index.css-176-    border-radius: 0.5rem;
+frontend/src/index.css:177:    transition: background-color 0.15s ease, border-color 0.15s ease;
+frontend/src/index.css-178-  }
+frontend/src/index.css-179-  .btn-secondary:hover {
+--
+frontend/src/index.css-330-  color: var(--text-muted);
+frontend/src/index.css-331-  border: 1px solid transparent;
+frontend/src/index.css:332:  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+frontend/src/index.css-333-}
+frontend/src/index.css-334-.nav-link:hover {
+--
+frontend/src/pages/Dashboard.jsx-89-] = await Promise.all([
+frontend/src/pages/Dashboard.jsx-90-  fetchStats().catch(() => null),
+frontend/src/pages/Dashboard.jsx:91:  fetchIncidents({ limit: 15 }).catch(() => null),
+frontend/src/pages/Dashboard.jsx-92-  fetchBuses().catch(() => []),
+frontend/src/pages/Dashboard.jsx-93-  fetchRoutes().catch(() => []),
+--
+frontend/src/pages/Dashboard.jsx-503-              </div>
+frontend/src/pages/Dashboard.jsx-504-            </div>
+frontend/src/pages/Dashboard.jsx:505:            <span className="font-mono text-[10px] px-2 py-0.5 rounded font-bold" style={{ background: 'rgba(56,189,248,0.15)', color: 'var(--accent)' }}>
+frontend/src/pages/Dashboard.jsx-506-              LIVE STREAM
+frontend/src/pages/Dashboard.jsx-507-            </span>
+--
+frontend/src/pages/Dashboard.jsx-525-                  style={{
+frontend/src/pages/Dashboard.jsx-526-                    background: 'var(--bg-elevated)',
+frontend/src/pages/Dashboard.jsx:527:                    borderColor: isCrit ? 'rgba(239,68,68,0.4)' : isHigh ? 'rgba(249,115,22,0.3)' : 'var(--border)',
+frontend/src/pages/Dashboard.jsx-528-                  }}
+frontend/src/pages/Dashboard.jsx-529-                >
+--
+frontend/src/pages/Dashboard.jsx-538-                      className="font-mono text-[9px] font-bold px-1.5 py-0.5 rounded uppercase"
+frontend/src/pages/Dashboard.jsx-539-                      style={{
+frontend/src/pages/Dashboard.jsx:540:                        background: isCrit ? 'rgba(239,68,68,0.2)' : isHigh ? 'rgba(249,115,22,0.2)' : 'rgba(56,189,248,0.15)',
+frontend/src/pages/Dashboard.jsx-541-                        color: isCrit ? '#ef4444' : isHigh ? '#f97316' : '#38bdf8',
+frontend/src/pages/Dashboard.jsx-542-                      }}
+--
+frontend/src/pages/Dashboard.jsx-620-                style={{
+frontend/src/pages/Dashboard.jsx-621-                  background: 'var(--bg-elevated)',
+frontend/src/pages/Dashboard.jsx:622:                  borderColor: isCrit ? 'rgba(239,68,68,0.35)' : isHigh ? 'rgba(249,115,22,0.3)' : 'var(--border)',
+frontend/src/pages/Dashboard.jsx-623-                }}
+frontend/src/pages/Dashboard.jsx-624-              >
+--
+frontend/src/pages/Dashboard.jsx-629-                      className="p-2 rounded-lg"
+frontend/src/pages/Dashboard.jsx-630-                      style={{
+frontend/src/pages/Dashboard.jsx:631:                        background: isCrit ? 'rgba(239,68,68,0.15)' : isHigh ? 'rgba(249,115,22,0.15)' : 'rgba(56,189,248,0.15)',
+frontend/src/pages/Dashboard.jsx-632-                      }}
+frontend/src/pages/Dashboard.jsx-633-                    >
+--
+frontend/src/pages/Dashboard.jsx-660-                          ? 'rgba(34,197,94,0.18)'
+frontend/src/pages/Dashboard.jsx-661-                          : inc.status === 'in_progress'
+frontend/src/pages/Dashboard.jsx:662:                            ? 'rgba(245,158,11,0.18)'
+frontend/src/pages/Dashboard.jsx-663-                            : 'rgba(239,68,68,0.18)',
+frontend/src/pages/Dashboard.jsx-664-                      color:
+--
+frontend/src/pages/Dashboard.jsx-671-                        ? 'rgba(34,197,94,0.3)'
+frontend/src/pages/Dashboard.jsx-672-                        : inc.status === 'in_progress'
+frontend/src/pages/Dashboard.jsx:673:                          ? 'rgba(245,158,11,0.3)'
+frontend/src/pages/Dashboard.jsx-674-                          : 'rgba(239,68,68,0.3)'
+frontend/src/pages/Dashboard.jsx-675-                        }`,
+--
+frontend/src/pages/Dashboard.jsx-743-            <div className="flex justify-between items-center pb-3" style={{ borderBottom: '1px solid var(--border)' }}>
+frontend/src/pages/Dashboard.jsx-744-              <div className="flex items-center gap-2">
+frontend/src/pages/Dashboard.jsx:745:                <div className="p-2 rounded-lg" style={{ background: 'rgba(56,189,248,0.15)' }}>
+frontend/src/pages/Dashboard.jsx-746-                  <AlertTriangle className="w-4 h-4 text-cyan-400" />
+frontend/src/pages/Dashboard.jsx-747-                </div>
+--
+backend/ai_engine.py-88-    """Existing OpenCV multi-strategy pothole detector — preserved, modular."""
+backend/ai_engine.py-89-
+backend/ai_engine.py:90:    def __init__(self, min_area_factor=0.001, max_area_factor=0.20, min_circularity=0.15):
+backend/ai_engine.py-91-        self.min_area_factor = min_area_factor
+backend/ai_engine.py-92-        self.max_area_factor = max_area_factor
+--
+backend/ai_engine.py-108-        )
+backend/ai_engine.py-109-        median_val = np.median(blurred)
+backend/ai_engine.py:110:        dark_threshold = max(median_val - 30, 15)
+backend/ai_engine.py-111-        _, thresh_dark = cv2.threshold(blurred, int(dark_threshold), 255, cv2.THRESH_BINARY_INV)
+backend/ai_engine.py-112-        combined = cv2.bitwise_or(thresh_adaptive, thresh_dark)
+--
+backend/ai_engine.py-136-            cv2.drawContours(mask, [cnt], -1, 255, -1)
+backend/ai_engine.py-137-            mean_inside = cv2.mean(gray, mask=mask)[0]
+backend/ai_engine.py:138:            kernel_big = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (15, 15))
+backend/ai_engine.py-139-            surround_mask = cv2.dilate(mask, kernel_big) - mask
+backend/ai_engine.py-140-            mean_surround = cv2.mean(gray, mask=surround_mask)[0] if cv2.countNonZero(surround_mask) > 0 else median_val
+--
+backend/ai_engine.py-144-            size_score = min(area / (w * road_h * 0.01), 1.0)
+backend/ai_engine.py-145-            contrast_score = max(0, 1.0 - darkness_ratio) * 1.5
+backend/ai_engine.py:146:            conf = min(0.35 + circularity * 0.25 + size_score * 0.15 + contrast_score * 0.25, 0.92)
+backend/ai_engine.py-147-            detections.append(Detection(
+backend/ai_engine.py-148-                det_type="pothole",
+--
+backend/create_sample_road_video.py-42-        cv2.line(frame, (int(width * 0.9), sky_h), (int(width * 0.95), height), (200, 200, 200), 2)
+backend/create_sample_road_video.py-43-
+backend/create_sample_road_video.py:44:        # ── Pothole 1: Large, high-contrast on right lane (frames 15–100) ──
+backend/create_sample_road_video.py:45:        if 15 <= f <= 100:
+backend/create_sample_road_video.py:46:            pot_y = int(height * 0.50 + (f - 15) * 2.0)
+backend/create_sample_road_video.py-47-            pot_x = int(width * 0.65)
+backend/create_sample_road_video.py-48-            if pot_y < height - 30:
+--
+backend/create_sample_road_video.py-74-        if 30 <= f <= 90:
+backend/create_sample_road_video.py-75-            crack_y_start = int(height * 0.6)
+backend/create_sample_road_video.py:76:            crack_x = int(width * 0.45) + int(np.sin(f * 0.3) * 15)
+backend/create_sample_road_video.py-77-            pts = []
+backend/create_sample_road_video.py-78-            for i in range(8):
+--
+backend/create_sample_road_video.py-81-                pts.append([px, py])
+backend/create_sample_road_video.py-82-            pts = np.array(pts, np.int32).reshape((-1, 1, 2))
+backend/create_sample_road_video.py:83:            cv2.polylines(frame, [pts], False, (15, 15, 18), 3)
+backend/create_sample_road_video.py-84-
+backend/create_sample_road_video.py-85-        # ── Moving vehicle rectangle on left lane (frames 0–120) ──
+--
+backend/incident_engine.py-8-  * ROAD ISSUE (pothole, road_damage) → auto-incident with severity
+backend/incident_engine.py-9-
+backend/incident_engine.py:10:Spatial deduplication preserved (15m radius) with optional confidence boost
+backend/incident_engine.py-11-to prevent duplicate incidents when the same physical hazard is detected
+backend/incident_engine.py-12-across consecutive video frames.
+--
+backend/incident_engine.py-78-    """
+backend/incident_engine.py-79-    Evaluate a detection and optionally create an incident.
+backend/incident_engine.py:80:    Applies spatial deduplication (15m radius) for detections of the same type
+backend/incident_engine.py-81-    in the same video so continuous frames don't flood duplicate incidents.
+backend/incident_engine.py-82-    Returns the incident dict if created, None otherwise.
+--
+backend/incident_engine.py-103-    # ── Spatial Deduplication ──────────────────────────────
+backend/incident_engine.py-104-    # Prevent hundreds of identical incidents for the same physical hazard.
+backend/incident_engine.py:105:    # Check for recent incidents of the same type within 15m radius.
+backend/incident_engine.py-106-    if video_id is not None:
+backend/incident_engine.py-107-        recent_incidents = await db.get_incidents(video_id=video_id, inc_type=det_type, limit=20)
+backend/incident_engine.py-108-        for inc in recent_incidents:
+backend/incident_engine.py-109-            dist = _haversine_distance(lat, lng, inc["lat"], inc["lng"])
+backend/incident_engine.py:110:            if dist < 15.0:
+backend/incident_engine.py-111-                # Same physical hazard detected in consecutive frames.
+backend/incident_engine.py-112-                # If this detection has higher confidence, update the existing incident.
+
+--- 8 ---
+Binary file frontend/src/assets/hero.png matches
+--
+frontend/src/assets/typescript.svg:1:<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="32" height="32" viewBox="0 0 256 256"><path fill="#007ACC" d="M0 128v128h256V0H0z"/><path fill="#FFF" d="m56.612 128.85l-.081 10.483h33.32v94.68h23.568v-94.68h33.321v-10.28c0-5.69-.122-10.444-.284-10.566c-.122-.162-20.4-.244-44.983-.203l-44.74.122l-.121 10.443Zm149.955-10.742c6.501 1.625 11.459 4.51 16.01 9.224c2.357 2.52 5.851 7.111 6.136 8.208c.08.325-11.053 7.802-17.798 11.988c-.244.162-1.22-.894-2.317-2.52c-3.291-4.795-6.745-6.867-12.028-7.233c-7.76-.528-12.759 3.535-12.718 10.321c0 1.992.284 3.17 1.097 4.795c1.707 3.536 4.876 5.649 14.832 9.956c18.326 7.883 26.168 13.084 31.045 20.48c5.445 8.249 6.664 21.415 2.966 31.208c-4.063 10.646-14.14 17.879-28.323 20.276c-4.388.772-14.79.65-19.504-.203c-10.28-1.828-20.033-6.908-26.047-13.572c-2.357-2.6-6.949-9.387-6.664-9.874c.122-.163 1.178-.813 2.356-1.504c1.138-.65 5.446-3.129 9.509-5.485l7.355-4.267l1.544 2.276c2.154 3.29 6.867 7.801 9.712 9.305c8.167 4.307 19.383 3.698 24.909-1.26c2.357-2.153 3.332-4.388 3.332-7.68c0-2.966-.366-4.266-1.91-6.501c-1.99-2.845-6.054-5.242-17.595-10.24c-13.206-5.69-18.895-9.224-24.096-14.832c-3.007-3.25-5.852-8.452-7.03-12.8c-.975-3.617-1.22-12.678-.447-16.335c2.723-12.76 12.353-21.659 26.25-24.3c4.51-.853 14.994-.528 19.424.569Z"/></svg>
+--
+frontend/src/assets/vite.svg:1:<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+--
+frontend/src/components/EmptyState.jsx-3-export default function EmptyState({ icon: Icon, title, description }) {
+frontend/src/components/EmptyState.jsx-4-  return (
+frontend/src/components/EmptyState.jsx:5:    <div className="card p-8 text-center" style={{ color: 'var(--text-muted)' }}>
+frontend/src/components/EmptyState.jsx:6:      {Icon && <Icon className="w-8 h-8 mx-auto mb-2 opacity-50" />}
+frontend/src/components/EmptyState.jsx-7-      <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>{title}</p>
+frontend/src/components/EmptyState.jsx-8-      {description && <p className="text-xs mt-1" style={{ color: 'var(--text-subtle)' }}>{description}</p>}
+--
+frontend/src/components/Layout.jsx-51-      <div
+frontend/src/components/Layout.jsx-52-        className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0"
+frontend/src/components/Layout.jsx:53:        style={{ background: 'color-mix(in srgb, var(--accent) 18%, var(--bg-elevated))', border: '1px solid color-mix(in srgb, var(--accent) 35%, transparent)' }}
+frontend/src/components/Layout.jsx-54-      >
+frontend/src/components/Layout.jsx-55-        <Bus className="w-5 h-5" style={{ color: 'var(--accent)' }} />
+--
+frontend/src/components/Layout.jsx-129-                AI Model
+frontend/src/components/Layout.jsx-130-              </span>
+frontend/src/components/Layout.jsx:131:              <span className="font-mono font-medium" style={{ color: 'var(--accent)' }}>YOLOv8n</span>
+frontend/src/components/Layout.jsx-132-            </div>
+frontend/src/components/Layout.jsx-133-            <div className="flex items-center justify-between" style={{ color: 'var(--text-muted)' }}>
+--
+frontend/src/components/Layout.jsx-242-              {notifyOpen && (
+frontend/src/components/Layout.jsx-243-                <div
+frontend/src/components/Layout.jsx:244:                  className="absolute right-0 mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-xl overflow-hidden z-50"
+frontend/src/components/Layout.jsx-245-                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', boxShadow: 'var(--shadow)' }}
+frontend/src/components/Layout.jsx-246-                >
+--
+frontend/src/components/Layout.jsx-282-              <div
+frontend/src/components/Layout.jsx-283-                className="w-7 h-7 rounded-full flex items-center justify-center"
+frontend/src/components/Layout.jsx:284:                style={{ background: 'color-mix(in srgb, var(--accent) 18%, transparent)', color: 'var(--accent)' }}
+frontend/src/components/Layout.jsx-285-              >
+frontend/src/components/Layout.jsx-286-                <User className="w-3.5 h-3.5" />
+--
+frontend/src/components/MapView.jsx-8-  if (isBus) {
+frontend/src/components/MapView.jsx-9-    const isLive = item.status === 'live';
+frontend/src/components/MapView.jsx:10:    const borderColor = isLive ? '#06b6d4' : '#64748b';
+frontend/src/components/MapView.jsx-11-    const pulseHtml = isLive
+frontend/src/components/MapView.jsx-12-      ? `<div style="position: absolute; inset: -4px; border-radius: 9999px; background: #06b6d4; opacity: 0.35; animation: radar-pulse 2s infinite;"></div>`
+--
+frontend/src/components/MapView.jsx-16-      <div style="position: relative; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+frontend/src/components/MapView.jsx-17-        ${pulseHtml}
+frontend/src/components/MapView.jsx:18:        <div style="width: 28px; height: 28px; border-radius: 8px; background: #0f172a; border: 2px solid ${borderColor}; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(6,182,212,0.45); z-index: 2;">
+frontend/src/components/MapView.jsx-19-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${borderColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+frontend/src/components/MapView.jsx:20:            <path d="M8 6v12"/><path d="M16 6v12"/><path d="M4 10h16"/><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
+frontend/src/components/MapView.jsx-21-          </svg>
+frontend/src/components/MapView.jsx-22-        </div>
+frontend/src/components/MapView.jsx:23:        <div style="position: absolute; bottom: -14px; background: rgba(15,23,42,0.9); border: 1px solid ${borderColor}; color: #e2e8f0; font-family: monospace; font-size: 9px; font-weight: 700; padding: 1px 4px; border-radius: 4px; white-space: nowrap; pointer-events: none; z-index: 3;">
+frontend/src/components/MapView.jsx-24-          ${item.id || 'BUS'}
+frontend/src/components/MapView.jsx-25-        </div>
+--
+frontend/src/components/MapView.jsx-30-      html,
+frontend/src/components/MapView.jsx-31-      className: 'custom-bus-marker',
+frontend/src/components/MapView.jsx:32:      iconSize: [34, 48],
+frontend/src/components/MapView.jsx-33-      iconAnchor: [17, 17],
+frontend/src/components/MapView.jsx:34:      popupAnchor: [0, -18],
+frontend/src/components/MapView.jsx-35-    });
+frontend/src/components/MapView.jsx-36-  }
+--
+frontend/src/components/MapView.jsx-40-  const severity = (item.severity || 'MEDIUM').toUpperCase();
+frontend/src/components/MapView.jsx-41-
+frontend/src/components/MapView.jsx:42:  let color = '#38bdf8';
+frontend/src/components/MapView.jsx-43-  let glyph = '●';
+frontend/src/components/MapView.jsx-44-  let pulse = severity === 'CRITICAL';
+--
+frontend/src/components/MapView.jsx-51-    glyph = '🚗';
+frontend/src/components/MapView.jsx-52-  } else if (type.includes('pedestrian') || type.includes('safety') || type.includes('jaywalking')) {
+frontend/src/components/MapView.jsx:53:    color = '#ec4899';
+frontend/src/components/MapView.jsx-54-    glyph = '🚶';
+frontend/src/components/MapView.jsx-55-  } else if (type.includes('crack') || type.includes('damage') || type.includes('road')) {
+--
+frontend/src/components/MapView.jsx-60-    else if (severity === 'HIGH') color = '#f97316';
+frontend/src/components/MapView.jsx-61-    else if (severity === 'MEDIUM') color = '#f59e0b';
+frontend/src/components/MapView.jsx:62:    else color = '#38bdf8';
+frontend/src/components/MapView.jsx-63-  }
+frontend/src/components/MapView.jsx-64-
+--
+frontend/src/components/MapView.jsx-88-  incidents = [],
+frontend/src/components/MapView.jsx-89-  buses = [],
+frontend/src/components/MapView.jsx:90:  center = [22.5726, 88.3639],
+frontend/src/components/MapView.jsx-91-  zoom = 13,
+frontend/src/components/MapView.jsx-92-  selectedIncident = null,
+--
+frontend/src/components/MapView.jsx-151-
+frontend/src/components/MapView.jsx-152-      const popupHtml = `
+frontend/src/components/MapView.jsx:153:        <div style="font-family: Inter, sans-serif; font-size: 12px; line-height: 1.4; padding: 4px; min-width: 180px;">
+frontend/src/components/MapView.jsx:154:          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
+frontend/src/components/MapView.jsx:155:            <span style="font-weight: 700; color: #f8fafc; font-size: 11px;">#${inc.id || 'INC'} ${typeLabel}</span>
+frontend/src/components/MapView.jsx-156-            <span style="font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: ${severityColor}; color: #fff; text-transform: uppercase;">
+frontend/src/components/MapView.jsx-157-              ${inc.severity || 'MEDIUM'}
+--
+frontend/src/components/MapView.jsx-161-            ${inc.description || 'Automated mobile edge detection.'}
+frontend/src/components/MapView.jsx-162-          </div>
+frontend/src/components/MapView.jsx:163:          <div style="display: flex; align-items: center; justify-content: space-between; font-family: monospace; font-size: 10px; color: #38bdf8; margin-bottom: 6px; background: rgba(56,189,248,0.1); padding: 3px 6px; border-radius: 4px;">
+frontend/src/components/MapView.jsx-164-            <span>📍 ${inc.lat.toFixed(4)}, ${inc.lng.toFixed(4)}</span>
+frontend/src/components/MapView.jsx-165-            <span>Bus: <strong>${inc.bus_id || inc.busId || 'BUS-102'}</strong></span>
+frontend/src/components/MapView.jsx-166-          </div>
+frontend/src/components/MapView.jsx:167:          <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; border-top: 1px solid rgba(148,163,184,0.2); padding-top: 5px;">
+frontend/src/components/MapView.jsx:168:            <span>Status: <strong style="color: #e2e8f0;">${inc.status || 'open'}</strong></span>
+frontend/src/components/MapView.jsx:169:            <span>Conf: <strong style="color: #38bdf8;">${Math.round((inc.confidence || 0.9) * 100)}%</strong></span>
+frontend/src/components/MapView.jsx-170-          </div>
+frontend/src/components/MapView.jsx-171-        </div>
+--
+frontend/src/components/MapView.jsx-200-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+frontend/src/components/MapView.jsx-201-            <div style="display: flex; align-items: center; gap: 6px;">
+frontend/src/components/MapView.jsx:202:              <span style="font-weight: 800; font-size: 13px; color: #38bdf8;">${bus.id}</span>
+frontend/src/components/MapView.jsx:203:              <span style="font-size: 9px; padding: 1px 5px; border-radius: 4px; background: rgba(34,197,94,0.2); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); font-weight: 600;">
+frontend/src/components/MapView.jsx-204-                ${bus.status === 'live' ? 'ONLINE' : 'DEPOT'}
+frontend/src/components/MapView.jsx-205-              </span>
+frontend/src/components/MapView.jsx-206-            </div>
+frontend/src/components/MapView.jsx:207:            <span style="font-family: monospace; font-size: 10px; color: #94a3b8;">${bus.speedKph || 0} km/h</span>
+frontend/src/components/MapView.jsx-208-          </div>
+frontend/src/components/MapView.jsx-209-          <div style="font-size: 11px; font-weight: 500; color: #f1f5f9; margin-bottom: 2px;">
+frontend/src/components/MapView.jsx-210-            ${bus.route || 'Urban Express Line'}
+frontend/src/components/MapView.jsx-211-          </div>
+frontend/src/components/MapView.jsx:212:          <div style="font-size: 10px; color: #94a3b8; margin-bottom: 6px;">
+frontend/src/components/MapView.jsx:213:            Corridor: <strong style="color: #e2e8f0;">${bus.corridor || 'Central'}</strong>
+frontend/src/components/MapView.jsx-214-          </div>
+frontend/src/components/MapView.jsx:215:          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10px; background: rgba(15,23,42,0.6); padding: 5px; border-radius: 4px; border: 1px solid rgba(148,163,184,0.15); margin-bottom: 4px;">
+frontend/src/components/MapView.jsx:216:            <div>Cam: <strong style="color: #38bdf8;">${bus.camera || 'Active'}</strong></div>
+frontend/src/components/MapView.jsx-217-            <div>Occupancy: <strong style="color: #f59e0b;">${bus.occupancy || 0}%</strong></div>
+frontend/src/components/MapView.jsx-218-            <div>Driver: <span style="color: #cbd5e1;">${bus.driver || 'N/A'}</span></div>
+frontend/src/components/MapView.jsx:219:            <div>Detections: <strong style="color: #4ade80;">${bus.detectionsToday || 0}</strong></div>
+frontend/src/components/MapView.jsx-220-          </div>
+frontend/src/components/MapView.jsx-221-        </div>
+--
+frontend/src/components/MapView.jsx-264-        <span className="w-2 h-2 rounded-full live-beacon" style={{ background: 'var(--ok)' }} />
+frontend/src/components/MapView.jsx-265-        <span className="font-semibold text-xs" style={{ color: 'var(--text)' }}>Urban GIS Network</span>
+frontend/src/components/MapView.jsx:266:        <span className="font-mono text-[10px] px-1.5 py-0.5 rounded" style={{ background: 'rgba(56,189,248,0.15)', color: 'var(--accent)' }}>
+frontend/src/components/MapView.jsx-267-          {buses.length} Buses · {incidents.length} Hazards
+frontend/src/components/MapView.jsx-268-        </span>
+--
+frontend/src/components/PageHeader.jsx-12-                background: 'color-mix(in srgb, var(--accent) 12%, transparent)',
+frontend/src/components/PageHeader.jsx-13-                color: 'var(--accent)',
+frontend/src/components/PageHeader.jsx:14:                borderColor: 'color-mix(in srgb, var(--accent) 28%, transparent)',
+frontend/src/components/PageHeader.jsx-15-              }}
+frontend/src/components/PageHeader.jsx-16-            >
+--
+frontend/src/components/StatCard.jsx-35-          <div
+frontend/src/components/StatCard.jsx-36-            className="p-2 rounded-lg"
+frontend/src/components/StatCard.jsx:37:            style={{ background: tone.bg, color: tone.fg, border: `1px solid color-mix(in srgb, ${tone.fg} 28%, transparent)` }}
+frontend/src/components/StatCard.jsx-38-          >
+frontend/src/components/StatCard.jsx-39-            <Icon className="w-4 h-4" />
+--
+frontend/src/index.css-23-  color-scheme: dark;
+frontend/src/index.css-24-  --bg-app: #0b1220;
+frontend/src/index.css:25:  --bg-sidebar: #0e1728;
+frontend/src/index.css-26-  --bg-card: #121a2c;
+frontend/src/index.css-27-  --bg-elevated: #172033;
+frontend/src/index.css-28-  --bg-input: #0b1220;
+frontend/src/index.css:29:  --bg-hover: rgba(56, 189, 248, 0.08);
+frontend/src/index.css:30:  --border: rgba(148, 163, 184, 0.16);
+frontend/src/index.css:31:  --border-strong: rgba(148, 163, 184, 0.28);
+frontend/src/index.css:32:  --text: #e8eef7;
+frontend/src/index.css:33:  --text-muted: #94a3b8;
+frontend/src/index.css:34:  --text-subtle: #64748b;
+frontend/src/index.css-35-  --accent: #22d3ee;
+frontend/src/index.css:36:  --accent-2: #3b82f6;
+frontend/src/index.css-37-  --ok: #22c55e;
+frontend/src/index.css-38-  --warn: #f59e0b;
+frontend/src/index.css-39-  --crit: #ef4444;
+frontend/src/index.css:40:  --shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+frontend/src/index.css:41:  --map-overlay: rgba(11, 18, 32, 0.88);
+frontend/src/index.css-42-  --scrollbar-track: #0b1220;
+frontend/src/index.css-43-  --scrollbar-thumb: #243044;
+frontend/src/index.css:44:  --selection: rgba(34, 211, 238, 0.28);
+frontend/src/index.css-45-}
+frontend/src/index.css-46-
+--
+frontend/src/index.css-48-  color-scheme: light;
+frontend/src/index.css-49-  --bg-app: #eef2f7;
+frontend/src/index.css:50:  --bg-sidebar: #f8fafc;
+frontend/src/index.css-51-  --bg-card: #ffffff;
+frontend/src/index.css-52-  --bg-elevated: #f1f5f9;
+frontend/src/index.css-53-  --bg-input: #ffffff;
+frontend/src/index.css:54:  --bg-hover: rgba(8, 145, 178, 0.08);
+frontend/src/index.css-55-  --border: rgba(15, 23, 42, 0.12);
+frontend/src/index.css-56-  --border-strong: rgba(15, 23, 42, 0.22);
+frontend/src/index.css-57-  --text: #0f172a;
+frontend/src/index.css-58-  --text-muted: #475569;
+frontend/src/index.css:59:  --text-subtle: #64748b;
+frontend/src/index.css-60-  --accent: #0e7490;
+frontend/src/index.css:61:  --accent-2: #1d4ed8;
+frontend/src/index.css:62:  --ok: #15803d;
+frontend/src/index.css-63-  --warn: #b45309;
+frontend/src/index.css-64-  --crit: #dc2626;
+frontend/src/index.css:65:  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+frontend/src/index.css-66-  --map-overlay: rgba(255, 255, 255, 0.92);
+frontend/src/index.css:67:  --scrollbar-track: #e2e8f0;
+frontend/src/index.css:68:  --scrollbar-thumb: #94a3b8;
+frontend/src/index.css-69-  --selection: rgba(14, 116, 144, 0.22);
+frontend/src/index.css-70-}
+--
+frontend/src/index.css-97-
+frontend/src/index.css-98-::-webkit-scrollbar {
+frontend/src/index.css:99:  width: 8px;
+frontend/src/index.css:100:  height: 8px;
+frontend/src/index.css-101-}
+frontend/src/index.css-102-::-webkit-scrollbar-track {
+--
+frontend/src/index.css-151-    justify-content: center;
+frontend/src/index.css-152-    gap: 0.375rem;
+frontend/src/index.css:153:    background: #0891b2;
+frontend/src/index.css-154-    color: #fff;
+frontend/src/index.css-155-    font-weight: 600;
+--
+frontend/src/index.css-184-  .page-title {
+frontend/src/index.css-185-    font-size: 1.25rem;
+frontend/src/index.css:186:    font-weight: 800;
+frontend/src/index.css-187-    letter-spacing: -0.02em;
+frontend/src/index.css-188-    color: var(--text);
+--
+frontend/src/index.css-256-    border: 1px solid var(--border);
+frontend/src/index.css-257-    border-radius: 0.75rem;
+frontend/src/index.css:258:    max-width: 28rem;
+frontend/src/index.css-259-    width: 100%;
+frontend/src/index.css-260-    padding: 1.5rem;
+--
+frontend/src/index.css-270-  70% {
+frontend/src/index.css-271-    transform: scale(1);
+frontend/src/index.css:272:    box-shadow: 0 0 0 8px transparent;
+frontend/src/index.css-273-  }
+frontend/src/index.css-274-  100% {
+--
+frontend/src/index.css-290-
+frontend/src/index.css-291-:root[data-theme="dark"] .leaflet-tile {
+frontend/src/index.css:292:  filter: brightness(0.62) invert(1) contrast(2.8) hue-rotate(200deg) saturate(0.35) brightness(0.72);
+frontend/src/index.css-293-}
+frontend/src/index.css-294-
+--
+frontend/src/index.css-324-  align-items: center;
+frontend/src/index.css-325-  gap: 0.75rem;
+frontend/src/index.css:326:  padding: 0.6rem 0.8rem;
+frontend/src/index.css-327-  border-radius: 0.6rem;
+frontend/src/index.css-328-  font-size: 13px;
+--
+frontend/src/index.css-339-  color: var(--accent);
+frontend/src/index.css-340-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+frontend/src/index.css:341:  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+frontend/src/index.css-342-}
+--
+frontend/src/pages/Analytics.jsx-5-import { fetchIncidents, fetchStats, subscribeWebSocket } from '../api';
+frontend/src/pages/Analytics.jsx-6-
+frontend/src/pages/Analytics.jsx:7:const HOURS = ['06', '08', '10', '12', '14', '16', '18', '20', '22'];
+frontend/src/pages/Analytics.jsx-8-
+frontend/src/pages/Analytics.jsx-9-function hourBucket(ts) {
+--
+frontend/src/pages/Analytics.jsx-88-            <span className="text-[10px] font-mono" style={{ color: 'var(--text-subtle)' }}>n = {incidents.length}</span>
+frontend/src/pages/Analytics.jsx-89-          </div>
+frontend/src/pages/Analytics.jsx:90:          <div className="flex items-end gap-2 h-48">
+frontend/src/pages/Analytics.jsx-91-            {hourly.map((h) => {
+frontend/src/pages/Analytics.jsx-92-              const height = Math.max(4, Math.round((h.count / maxHour) * 100));
+--
+frontend/src/pages/Analytics.jsx-154-                { name: 'Zone N (lat>22.5)', match: (i) => i.lat > 22.5 },
+frontend/src/pages/Analytics.jsx-155-                { name: 'Zone S (lat<=22.5)', match: (i) => i.lat <= 22.5 },
+frontend/src/pages/Analytics.jsx:156:                { name: 'Zone E (lng>88.3)', match: (i) => i.lng > 88.3 },
+frontend/src/pages/Analytics.jsx:157:                { name: 'Zone W (lng<=88.3)', match: (i) => i.lng <= 88.3 },
+frontend/src/pages/Analytics.jsx-158-              ].map((row) => {
+frontend/src/pages/Analytics.jsx-159-                const rows = incidents.filter(row.match);
+--
+frontend/src/pages/Dashboard.jsx-246-        lat: parseFloat(modalForm.lat),
+frontend/src/pages/Dashboard.jsx-247-        lng: parseFloat(modalForm.lng),
+frontend/src/pages/Dashboard.jsx:248:        confidence: 0.98,
+frontend/src/pages/Dashboard.jsx-249-        status: 'open',
+frontend/src/pages/Dashboard.jsx-250-      };
+--
+frontend/src/pages/Dashboard.jsx-361-            <Cpu className="w-3.5 h-3.5" style={{ color: 'var(--accent)' }} />
+frontend/src/pages/Dashboard.jsx-362-            <span style={{ color: 'var(--text-muted)' }}>AI Engine:</span>
+frontend/src/pages/Dashboard.jsx:363:            <span className="font-semibold text-emerald-400">Online (YOLOv8n)</span>
+frontend/src/pages/Dashboard.jsx-364-          </div>
+frontend/src/pages/Dashboard.jsx-365-
+frontend/src/pages/Dashboard.jsx-366-          <div className="flex items-center gap-1.5">
+frontend/src/pages/Dashboard.jsx:367:            <VideoIcon className="w-3.5 h-3.5" style={{ color: '#38bdf8' }} />
+frontend/src/pages/Dashboard.jsx-368-            <span style={{ color: 'var(--text-muted)' }}>Video Processing:</span>
+frontend/src/pages/Dashboard.jsx-369-            <span className="font-semibold" style={{ color: 'var(--text)' }}>Ready (OpenCV)</span>
+--
+frontend/src/pages/Dashboard.jsx-377-
+frontend/src/pages/Dashboard.jsx-378-          <div className="flex items-center gap-1.5">
+frontend/src/pages/Dashboard.jsx:379:            <Server className="w-3.5 h-3.5" style={{ color: '#a855f7' }} />
+frontend/src/pages/Dashboard.jsx-380-            <span style={{ color: 'var(--text-muted)' }}>Central Server:</span>
+frontend/src/pages/Dashboard.jsx-381-            <span className="font-semibold text-emerald-400">Online (FastAPI)</span>
+--
+frontend/src/pages/Dashboard.jsx-390-      {/* ── MAIN CONTENT GRID: LEFT GIS MAP & RIGHT DETECTION FEED ── */}
+frontend/src/pages/Dashboard.jsx-391-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+frontend/src/pages/Dashboard.jsx:392:        {/* LEFT / LARGE GIS MAP (8 Cols) */}
+frontend/src/pages/Dashboard.jsx:393:        <div id="command-map-section" className="lg:col-span-8 card p-4 flex flex-col space-y-3">
+frontend/src/pages/Dashboard.jsx-394-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2" style={{ borderBottom: '1px solid var(--border)' }}>
+frontend/src/pages/Dashboard.jsx-395-            <div className="flex items-center gap-2">
+frontend/src/pages/Dashboard.jsx:396:              <div className="p-1.5 rounded-lg" style={{ background: 'rgba(56,189,248,0.12)' }}>
+frontend/src/pages/Dashboard.jsx-397-                <MapPin className="w-4 h-4" style={{ color: 'var(--accent)' }} />
+frontend/src/pages/Dashboard.jsx-398-              </div>
+--
+frontend/src/pages/Dashboard.jsx-503-              </div>
+frontend/src/pages/Dashboard.jsx-504-            </div>
+frontend/src/pages/Dashboard.jsx:505:            <span className="font-mono text-[10px] px-2 py-0.5 rounded font-bold" style={{ background: 'rgba(56,189,248,0.15)', color: 'var(--accent)' }}>
+frontend/src/pages/Dashboard.jsx-506-              LIVE STREAM
+frontend/src/pages/Dashboard.jsx-507-            </span>
+--
+frontend/src/pages/Dashboard.jsx-525-                  style={{
+frontend/src/pages/Dashboard.jsx-526-                    background: 'var(--bg-elevated)',
+frontend/src/pages/Dashboard.jsx:527:                    borderColor: isCrit ? 'rgba(239,68,68,0.4)' : isHigh ? 'rgba(249,115,22,0.3)' : 'var(--border)',
+frontend/src/pages/Dashboard.jsx-528-                  }}
+frontend/src/pages/Dashboard.jsx-529-                >
+--
+frontend/src/pages/Dashboard.jsx-538-                      className="font-mono text-[9px] font-bold px-1.5 py-0.5 rounded uppercase"
+frontend/src/pages/Dashboard.jsx-539-                      style={{
+frontend/src/pages/Dashboard.jsx:540:                        background: isCrit ? 'rgba(239,68,68,0.2)' : isHigh ? 'rgba(249,115,22,0.2)' : 'rgba(56,189,248,0.15)',
+frontend/src/pages/Dashboard.jsx:541:                        color: isCrit ? '#ef4444' : isHigh ? '#f97316' : '#38bdf8',
+frontend/src/pages/Dashboard.jsx-542-                      }}
+frontend/src/pages/Dashboard.jsx-543-                    >
+--
+frontend/src/pages/Dashboard.jsx-620-                style={{
+frontend/src/pages/Dashboard.jsx-621-                  background: 'var(--bg-elevated)',
+frontend/src/pages/Dashboard.jsx:622:                  borderColor: isCrit ? 'rgba(239,68,68,0.35)' : isHigh ? 'rgba(249,115,22,0.3)' : 'var(--border)',
+frontend/src/pages/Dashboard.jsx-623-                }}
+frontend/src/pages/Dashboard.jsx-624-              >
+--
+frontend/src/pages/Dashboard.jsx-629-                      className="p-2 rounded-lg"
+frontend/src/pages/Dashboard.jsx-630-                      style={{
+frontend/src/pages/Dashboard.jsx:631:                        background: isCrit ? 'rgba(239,68,68,0.15)' : isHigh ? 'rgba(249,115,22,0.15)' : 'rgba(56,189,248,0.15)',
+frontend/src/pages/Dashboard.jsx-632-                      }}
+frontend/src/pages/Dashboard.jsx-633-                    >
+--
+frontend/src/pages/Dashboard.jsx-658-                      background:
+frontend/src/pages/Dashboard.jsx-659-                        inc.status === 'resolved'
+frontend/src/pages/Dashboard.jsx:660:                          ? 'rgba(34,197,94,0.18)'
+frontend/src/pages/Dashboard.jsx-661-                          : inc.status === 'in_progress'
+frontend/src/pages/Dashboard.jsx:662:                            ? 'rgba(245,158,11,0.18)'
+frontend/src/pages/Dashboard.jsx:663:                            : 'rgba(239,68,68,0.18)',
+frontend/src/pages/Dashboard.jsx-664-                      color:
+frontend/src/pages/Dashboard.jsx-665-                        inc.status === 'resolved'
+frontend/src/pages/Dashboard.jsx:666:                          ? '#4ade80'
+frontend/src/pages/Dashboard.jsx-667-                          : inc.status === 'in_progress'
+frontend/src/pages/Dashboard.jsx-668-                            ? '#fbbf24'
+frontend/src/pages/Dashboard.jsx:669:                            : '#f87171',
+frontend/src/pages/Dashboard.jsx-670-                      border: `1px solid ${inc.status === 'resolved'
+frontend/src/pages/Dashboard.jsx-671-                        ? 'rgba(34,197,94,0.3)'
+frontend/src/pages/Dashboard.jsx-672-                        : inc.status === 'in_progress'
+frontend/src/pages/Dashboard.jsx:673:                          ? 'rgba(245,158,11,0.3)'
+frontend/src/pages/Dashboard.jsx:674:                          : 'rgba(239,68,68,0.3)'
+frontend/src/pages/Dashboard.jsx-675-                        }`,
+frontend/src/pages/Dashboard.jsx-676-                    }}
+--
+frontend/src/pages/Dashboard.jsx-743-            <div className="flex justify-between items-center pb-3" style={{ borderBottom: '1px solid var(--border)' }}>
+frontend/src/pages/Dashboard.jsx-744-              <div className="flex items-center gap-2">
+frontend/src/pages/Dashboard.jsx:745:                <div className="p-2 rounded-lg" style={{ background: 'rgba(56,189,248,0.15)' }}>
+frontend/src/pages/Dashboard.jsx-746-                  <AlertTriangle className="w-4 h-4 text-cyan-400" />
+frontend/src/pages/Dashboard.jsx-747-                </div>
+--
+frontend/src/pages/Dashboard.jsx-757-              <button
+frontend/src/pages/Dashboard.jsx-758-                onClick={() => setInspectModalIncident(null)}
+frontend/src/pages/Dashboard.jsx:759:                className="p-1 rounded hover:bg-slate-800 text-lg font-bold"
+frontend/src/pages/Dashboard.jsx-760-                style={{ color: 'var(--text-muted)' }}
+frontend/src/pages/Dashboard.jsx-761-              >
+--
+frontend/src/pages/Dashboard.jsx-791-                </span>
+frontend/src/pages/Dashboard.jsx-792-                <p className="text-xs leading-relaxed" style={{ color: 'var(--text)' }}>
+frontend/src/pages/Dashboard.jsx:793:                  {inspectModalIncident.description || 'Automated detection by YOLOv8n edge model running on onboard mobile platform.'}
+frontend/src/pages/Dashboard.jsx-794-                </p>
+frontend/src/pages/Dashboard.jsx-795-              </div>
+--
+frontend/src/pages/Incidents.jsx-24-    severity: 'HIGH',
+frontend/src/pages/Incidents.jsx-25-    lat: 22.5726,
+frontend/src/pages/Incidents.jsx:26:    lng: 88.3639,
+frontend/src/pages/Incidents.jsx-27-    description: '',
+frontend/src/pages/Incidents.jsx-28-  });
+--
+frontend/src/pages/Incidents.jsx-99-      });
+frontend/src/pages/Incidents.jsx-100-      setShowCreateModal(false);
+frontend/src/pages/Incidents.jsx:101:      setCreateForm({ type: 'pothole', severity: 'HIGH', lat: 22.5726, lng: 88.3639, description: '' });
+frontend/src/pages/Incidents.jsx-102-    } catch (err) {
+frontend/src/pages/Incidents.jsx-103-      alert('Failed to create incident: ' + err.message);
+--
+frontend/src/pages/Incidents.jsx-112-      `"${(i.description || '').replace(/"/g, '""')}"`
+frontend/src/pages/Incidents.jsx-113-    ]);
+frontend/src/pages/Incidents.jsx:114:    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map((e) => e.join(','))].join('\n');
+frontend/src/pages/Incidents.jsx-115-    const encodedUri = encodeURI(csvContent);
+frontend/src/pages/Incidents.jsx-116-    const link = document.createElement('a');
+--
+frontend/src/pages/MapPage.jsx-227-            ) : (
+frontend/src/pages/MapPage.jsx-228-              <div className="text-center py-12 space-y-2" style={{ color: 'var(--text-subtle)' }}>
+frontend/src/pages/MapPage.jsx:229:                <Compass className="w-8 h-8 mx-auto opacity-40" />
+frontend/src/pages/MapPage.jsx-230-                <p className="text-xs">Click any map marker to view detailed telemetry</p>
+frontend/src/pages/MapPage.jsx-231-              </div>
+--
+frontend/src/pages/Reports.jsx-51-    const headers = ['Metric', 'Value'];
+frontend/src/pages/Reports.jsx-52-    const rows = summaryRows.map((r) => [r.metric, r.value]);
+frontend/src/pages/Reports.jsx:53:    const csv = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map((e) => e.join(','))].join('\n');
+frontend/src/pages/Reports.jsx-54-    const link = document.createElement('a');
+frontend/src/pages/Reports.jsx-55-    link.href = encodeURI(csv);
+--
+frontend/src/pages/Reports.jsx-126-              </thead>
+frontend/src/pages/Reports.jsx-127-              <tbody>
+frontend/src/pages/Reports.jsx:128:                {videos.slice(0, 8).map((v) => (
+frontend/src/pages/Reports.jsx-129-                  <tr key={v.id}>
+frontend/src/pages/Reports.jsx-130-                    <td className="font-mono" style={{ color: 'var(--accent)' }}>#{v.id}</td>
+frontend/src/pages/Reports.jsx:131:                    <td className="truncate max-w-[180px]">{v.original_name || v.filename}</td>
+frontend/src/pages/Reports.jsx-132-                    <td className="uppercase text-[11px]">{v.status}</td>
+frontend/src/pages/Reports.jsx-133-                    <td className="font-mono">{v.total_frames || 0}</td>
+--
+frontend/src/pages/Settings.jsx-101-          <div className="flex items-center justify-between">
+frontend/src/pages/Settings.jsx-102-            <span style={{ color: 'var(--text-muted)' }}>Model</span>
+frontend/src/pages/Settings.jsx:103:            <span className="font-mono">YOLOv8n</span>
+frontend/src/pages/Settings.jsx-104-          </div>
+frontend/src/pages/Settings.jsx-105-          <div className="flex items-center justify-between">
+--
+frontend/src/pages/VideoProcess.jsx-143-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+frontend/src/pages/VideoProcess.jsx-144-        {/* LEFT: Video Stage */}
+frontend/src/pages/VideoProcess.jsx:145:        <div className="lg:col-span-8 card p-4 space-y-4">
+frontend/src/pages/VideoProcess.jsx-146-          <div className="flex items-center justify-between">
+frontend/src/pages/VideoProcess.jsx-147-            <h2 className="text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+--
+frontend/src/pages/VideoProcess.jsx-192-                )}
+frontend/src/pages/VideoProcess.jsx-193-                {cameraActive && (
+frontend/src/pages/VideoProcess.jsx:194:                  <button onClick={stopCamera} className="absolute top-4 right-4 bg-red-500/80 hover:bg-red-500 text-white p-2 rounded-full">
+frontend/src/pages/VideoProcess.jsx-195-                    <X className="w-4 h-4" />
+frontend/src/pages/VideoProcess.jsx-196-                  </button>
+--
+frontend/src/pages/VideoProcess.jsx-214-            <div className="flex gap-6 text-[11px] font-mono p-3 rounded-lg bg-[var(--bg-elevated)] border border-[var(--border)]">
+frontend/src/pages/VideoProcess.jsx-215-              <span className="flex items-center gap-2"><Satellite className="w-3.5 h-3.5 text-cyan-400" /> GPS: {gpsSource === 'browser' ? '📍 Live' : gpsSource === 'manual' ? '📍 Manual' : gpsSource === 'demo' ? '📍 Demo' : gpsSource === 'denied' ? '🚫 Denied' : gpsSource === 'unavailable' ? '📵 Unavailable' : '🔍 Seeking'}</span>
+frontend/src/pages/VideoProcess.jsx:216:              <span className="flex items-center gap-2"><Cpu className="w-3.5 h-3.5 text-cyan-400" /> AI Engine: YOLOv8n</span>
+frontend/src/pages/VideoProcess.jsx-217-              {gpsLat !== null && gpsLng !== null && (
+frontend/src/pages/VideoProcess.jsx-218-                <span className="flex items-center gap-2 text-[10px]">{gpsLat.toFixed(6)}, {gpsLng.toFixed(6)}</span>
+--
+backend/ai_engine.py-1-"""
+backend/ai_engine.py-2-BusSense AI — AI Detection Engine
+backend/ai_engine.py:3:Uses YOLOv8n for vehicles and pedestrians; OpenCV fallback for road defects.
+backend/ai_engine.py-4-Configurable confidence thresholds and clean abstraction for future models.
+backend/ai_engine.py-5-"""
+--
+backend/ai_engine.py-133-                continue
+backend/ai_engine.py-134-            x, y, bw, bh = cv2.boundingRect(cnt)
+backend/ai_engine.py:135:            mask = np.zeros(gray.shape[:2], dtype=np.uint8)
+backend/ai_engine.py-136-            cv2.drawContours(mask, [cnt], -1, 255, -1)
+backend/ai_engine.py-137-            mean_inside = cv2.mean(gray, mask=mask)[0]
+--
+backend/ai_engine.py-140-            mean_surround = cv2.mean(gray, mask=surround_mask)[0] if cv2.countNonZero(surround_mask) > 0 else median_val
+backend/ai_engine.py-141-            darkness_ratio = mean_inside / max(mean_surround, 1)
+backend/ai_engine.py:142:            if darkness_ratio > 0.85:
+backend/ai_engine.py-143-                continue
+backend/ai_engine.py-144-            size_score = min(area / (w * road_h * 0.01), 1.0)
+--
+backend/ai_engine.py-173-        try:
+backend/ai_engine.py-174-            from ultralytics import YOLO
+backend/ai_engine.py:175:            model_path = os.path.join(os.path.dirname(__file__), "yolov8n.pt")
+backend/ai_engine.py-176-            if not os.path.exists(model_path):
+backend/ai_engine.py:177:                self.yolo_model = YOLO("yolov8n.pt")
+backend/ai_engine.py-178-            else:
+backend/ai_engine.py-179-                self.yolo_model = YOLO(model_path)
+backend/ai_engine.py-180-            self.use_yolo = True
+backend/ai_engine.py:181:            logger.info("YOLOv8n model loaded")
+backend/ai_engine.py-182-        except Exception as e:
+backend/ai_engine.py-183-            logger.warning(f"YOLO unavailable: {e}")
+--
+backend/ai_engine.py-224-            "confidence_thresholds": self.confidence_thresholds,
+backend/ai_engine.py-225-            "road_defect_detector": self.road_defect_detector.__class__.__name__,
+backend/ai_engine.py:226:            "vehicle_method": "yolov8n" if self.use_yolo else "unavailable",
+backend/ai_engine.py-227-            "road_issue_method": "opencv_multi_strategy" if isinstance(self.road_defect_detector, OpenCVRoadDefectFallback) else self.road_defect_detector.__class__.__name__,
+backend/ai_engine.py-228-        }
+--
+backend/create_sample_road_video.py-12-
+backend/create_sample_road_video.py-13-
+backend/create_sample_road_video.py:14:def generate_road_video(filename="sample_road_inspection.mp4", num_frames=180, fps=30):
+backend/create_sample_road_video.py-15-    width, height = 640, 360
+backend/create_sample_road_video.py-16-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+--
+backend/create_sample_road_video.py-20-    for f in range(num_frames):
+backend/create_sample_road_video.py-21-        # Base frame
+backend/create_sample_road_video.py:22:        frame = np.zeros((height, width, 3), dtype=np.uint8)
+backend/create_sample_road_video.py-23-
+backend/create_sample_road_video.py-24-        # Sky (upper 35%)
+backend/create_sample_road_video.py-25-        sky_h = int(height * 0.35)
+backend/create_sample_road_video.py:26:        frame[:sky_h, :] = [180, 140, 100]
+backend/create_sample_road_video.py-27-
+backend/create_sample_road_video.py-28-        # Asphalt Road (lower 65%) — base gray + noise texture
+backend/create_sample_road_video.py-29-        road = frame[sky_h:, :]
+backend/create_sample_road_video.py:30:        road[:] = [80, 80, 85]  # Lighter asphalt for more contrast
+backend/create_sample_road_video.py-31-        # Add grain noise so adaptive threshold has texture to work with
+backend/create_sample_road_video.py-32-        noise = rng.randint(-12, 13, road.shape, dtype=np.int16)
+backend/create_sample_road_video.py:33:        road[:] = np.clip(road.astype(np.int16) + noise, 0, 255).astype(np.uint8)
+backend/create_sample_road_video.py-34-
+backend/create_sample_road_video.py-35-        # Lane markings (dashed white center line)
+backend/create_sample_road_video.py:36:        dash_offset = (f * 8) % 60
+backend/create_sample_road_video.py-37-        for y in range(sky_h + dash_offset, height, 60):
+backend/create_sample_road_video.py-38-            cv2.line(frame, (width // 2, y), (width // 2, min(height, y + 30)), (230, 230, 230), 4)
+--
+backend/create_sample_road_video.py-47-            pot_x = int(width * 0.65)
+backend/create_sample_road_video.py-48-            if pot_y < height - 30:
+backend/create_sample_road_video.py:49:                # Dark interior (near-black vs ~80 gray → Δ≈70)
+backend/create_sample_road_video.py:50:                cv2.ellipse(frame, (pot_x, pot_y), (32, 22), 8, 0, 360, (10, 10, 10), -1)
+backend/create_sample_road_video.py-51-                # Shadow ring
+backend/create_sample_road_video.py:52:                cv2.ellipse(frame, (pot_x, pot_y), (36, 26), 8, 0, 360, (25, 25, 28), 3)
+backend/create_sample_road_video.py-53-                # Outer highlight ring
+backend/create_sample_road_video.py:54:                cv2.ellipse(frame, (pot_x, pot_y), (40, 30), 8, 0, 360, (50, 50, 55), 2)
+backend/create_sample_road_video.py-55-
+backend/create_sample_road_video.py-56-        # ── Pothole 2: Smaller, left lane (frames 50–140) ──
+--
+backend/create_sample_road_video.py-59-            pot2_x = int(width * 0.32)
+backend/create_sample_road_video.py-60-            if pot2_y < height - 25:
+backend/create_sample_road_video.py:61:                cv2.ellipse(frame, (pot2_x, pot2_y), (26, 18), -12, 0, 360, (8, 8, 12), -1)
+backend/create_sample_road_video.py-62-                cv2.ellipse(frame, (pot2_x, pot2_y), (30, 22), -12, 0, 360, (30, 30, 35), 3)
+backend/create_sample_road_video.py-63-
+backend/create_sample_road_video.py-64-        # ── Pothole 3: Large crater, center-right (frames 110–170) ──
+backend/create_sample_road_video.py-65-        if 110 <= f <= 170:
+backend/create_sample_road_video.py:66:            pot3_y = int(height * 0.55 + (f - 110) * 1.8)
+backend/create_sample_road_video.py-67-            pot3_x = int(width * 0.55)
+backend/create_sample_road_video.py-68-            if pot3_y < height - 35:
+backend/create_sample_road_video.py:69:                cv2.ellipse(frame, (pot3_x, pot3_y), (38, 28), 5, 0, 360, (5, 5, 8), -1)
+backend/create_sample_road_video.py:70:                cv2.ellipse(frame, (pot3_x, pot3_y), (42, 32), 5, 0, 360, (28, 28, 32), 3)
+backend/create_sample_road_video.py:71:                cv2.ellipse(frame, (pot3_x, pot3_y), (46, 36), 5, 0, 360, (55, 55, 58), 2)
+backend/create_sample_road_video.py-72-
+backend/create_sample_road_video.py-73-        # ── Road crack: jagged dark line (frames 30–90) ──
+--
+backend/create_sample_road_video.py-76-            crack_x = int(width * 0.45) + int(np.sin(f * 0.3) * 15)
+backend/create_sample_road_video.py-77-            pts = []
+backend/create_sample_road_video.py:78:            for i in range(8):
+backend/create_sample_road_video.py-79-                px = crack_x + rng.randint(-6, 7)
+backend/create_sample_road_video.py:80:                py = crack_y_start + i * 8
+backend/create_sample_road_video.py-81-                pts.append([px, py])
+backend/create_sample_road_video.py-82-            pts = np.array(pts, np.int32).reshape((-1, 1, 2))
+backend/create_sample_road_video.py:83:            cv2.polylines(frame, [pts], False, (15, 15, 18), 3)
+backend/create_sample_road_video.py-84-
+backend/create_sample_road_video.py-85-        # ── Moving vehicle rectangle on left lane (frames 0–120) ──
+backend/create_sample_road_video.py-86-        if f < 120:
+backend/create_sample_road_video.py:87:            veh_y = int(height * 0.38 + f * 1.5)
+backend/create_sample_road_video.py-88-            veh_x = int(width * 0.22)
+backend/create_sample_road_video.py-89-            if veh_y < height - 40:
+backend/create_sample_road_video.py-90-                cv2.rectangle(frame, (veh_x, veh_y), (veh_x + 50, veh_y + 35),
+backend/create_sample_road_video.py:91:                              (30, 30, 180), -1)  # Blue-ish car
+backend/create_sample_road_video.py-92-                cv2.rectangle(frame, (veh_x, veh_y), (veh_x + 50, veh_y + 35),
+backend/create_sample_road_video.py-93-                              (20, 20, 120), 2)
+--
+backend/incident_engine.py-18-# ── Severity Rules Per Detection Type ──────────────────
+backend/incident_engine.py-19-SEVERITY_RULES = {
+backend/incident_engine.py:20:    "pothole": lambda conf: "CRITICAL" if conf > 0.85 else "HIGH" if conf > 0.7 else "MEDIUM" if conf > 0.5 else "LOW",
+backend/incident_engine.py-21-    "pedestrian": lambda conf: "HIGH" if conf > 0.6 else "MEDIUM",
+backend/incident_engine.py-22-    "car": lambda conf: "LOW",
+backend/incident_engine.py-23-    "bike": lambda conf: "LOW",
+backend/incident_engine.py-24-    "bus": lambda conf: "LOW",
+backend/incident_engine.py:25:    "truck": lambda conf: "MEDIUM" if conf > 0.8 else "LOW",
+backend/incident_engine.py-26-    "road_damage": lambda conf: "HIGH" if conf > 0.7 else "MEDIUM",
+backend/incident_engine.py-27-}
+--
+backend/main.py-292-if __name__ == "__main__":
+backend/main.py-293-    import uvicorn
+backend/main.py:294:    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+--
+backend/test_pipeline.py-11-import os
+backend/test_pipeline.py-12-
+backend/test_pipeline.py:13:BASE_URL = "http://127.0.0.1:8000"
+backend/test_pipeline.py-14-
+backend/test_pipeline.py-15-def test_pipeline():
+--
+backend/test_pipeline.py-19-        files = {"file": ("sample_road_inspection.mp4", f, "video/mp4")}
+backend/test_pipeline.py-20-        data = {
+backend/test_pipeline.py:21:            "gps_lat": 22.5847,
+backend/test_pipeline.py:22:            "gps_lng": 88.3582,
+backend/test_pipeline.py:23:            "gps_end_lat": 22.5861,
+backend/test_pipeline.py:24:            "gps_end_lng": 88.3690
+backend/test_pipeline.py-25-        }
+backend/test_pipeline.py-26-        res = requests.post(f"{BASE_URL}/api/videos/upload", files=files, data=data)
+--
+backend/test_processor_direct.py-11-        filename="sample_road_inspection.mp4",
+backend/test_processor_direct.py-12-        original_name="sample_road_inspection.mp4",
+backend/test_processor_direct.py:13:        gps_lat=22.5847,
+backend/test_processor_direct.py:14:        gps_lng=88.3582,
+backend/test_processor_direct.py:15:        gps_end_lat=22.5861,
+backend/test_processor_direct.py:16:        gps_end_lng=88.3690
+backend/test_processor_direct.py-17-    )
+backend/test_processor_direct.py-18-    print("Created video in DB:", video)
+
+--- MG Road ---
+No matches
+
+--- Park Street ---
+No matches
+
+--- Howrah ---
+No matches
+
+--- Demo ---
+frontend/src/components/Layout.jsx-287-              </div>
+frontend/src/components/Layout.jsx-288-              <div className="pr-1 leading-tight">
+frontend/src/components/Layout.jsx:289:                <div className="text-[11px] font-bold">Demo Operator</div>
+frontend/src/components/Layout.jsx-290-                <div className="text-[10px]" style={{ color: 'var(--text-muted)' }}>SIH 2026</div>
+frontend/src/components/Layout.jsx-291-              </div>
+--
+frontend/src/context/SystemContext.jsx-6-const GPS_MANUAL_KEY = 'bussense-gps-manual';
+frontend/src/context/SystemContext.jsx-7-
+frontend/src/context/SystemContext.jsx:8:// No hardcoded demo coordinates
+frontend/src/context/SystemContext.jsx-9-
+frontend/src/context/SystemContext.jsx-10-const SystemContext = createContext(null);
+--
+frontend/src/context/SystemContext.jsx-45-  const [lastEvent, setLastEvent] = useState(null);
+frontend/src/context/SystemContext.jsx-46-
+frontend/src/context/SystemContext.jsx:47:  // Real GPS state (browser geolocation + manual/demo fallback)
+frontend/src/context/SystemContext.jsx-48-  const [gpsLat, setGpsLat] = useState(null);
+frontend/src/context/SystemContext.jsx-49-  const [gpsLng, setGpsLng] = useState(null);
+--
+frontend/src/context/SystemContext.jsx-92-  }, [manualOverride]);
+frontend/src/context/SystemContext.jsx-93-
+frontend/src/context/SystemContext.jsx:94:  // Browser geolocation (skipped while manual/demo override is active)
+frontend/src/context/SystemContext.jsx-95-  useEffect(() => {
+frontend/src/context/SystemContext.jsx-96-    if (manualOverride) return undefined;
+--
+frontend/src/context/SystemContext.jsx-125-      setGpsSource(denied ? 'denied' : 'unavailable');
+frontend/src/context/SystemContext.jsx-126-      setGpsLocked(false);
+frontend/src/context/SystemContext.jsx:127:      // Do NOT silently switch to demo coordinates
+frontend/src/context/SystemContext.jsx:128:      // Keep previous real coords if any; do not overwrite with demo
+frontend/src/context/SystemContext.jsx-129-      // Leave gpsLat and gpsLng as they are (null if not set, or last known)
+frontend/src/context/SystemContext.jsx-130-    };
+--
+frontend/src/context/SystemContext.jsx-158-  }, []);
+frontend/src/context/SystemContext.jsx-159-
+frontend/src/context/SystemContext.jsx:160:  const setManualGps = useCallback((lat, lng, { demo = false } = {}) => {
+frontend/src/context/SystemContext.jsx-161-    const latN = Number(lat);
+frontend/src/context/SystemContext.jsx-162-    const lngN = Number(lng);
+frontend/src/context/SystemContext.jsx-163-    if (Number.isNaN(latN) || Number.isNaN(lngN)) return;
+frontend/src/context/SystemContext.jsx:164:    setManualOverride({ lat: latN, lng: lngN, demo });
+frontend/src/context/SystemContext.jsx-165-  }, []);
+frontend/src/context/SystemContext.jsx-166-
+--
+frontend/src/context/SystemContext.jsx-225-      case 'manual':
+frontend/src/context/SystemContext.jsx-226-        return 'Manual';
+frontend/src/context/SystemContext.jsx:227:      case 'demo':
+frontend/src/context/SystemContext.jsx:228:        return 'Demo Fallback';
+frontend/src/context/SystemContext.jsx-229-      case 'denied':
+frontend/src/context/SystemContext.jsx-230-        return 'Denied';
+--
+frontend/src/context/SystemContext.jsx-248-      gpsModeLabel,
+frontend/src/context/SystemContext.jsx-249-      setManualGps,
+frontend/src/context/SystemContext.jsx:250:      useDemoGps,
+frontend/src/context/SystemContext.jsx-251-      clearManualGps,
+frontend/src/context/SystemContext.jsx-252-      getCurrentPosition,
+--
+frontend/src/context/SystemContext.jsx-269-      gpsModeLabel,
+frontend/src/context/SystemContext.jsx-270-      setManualGps,
+frontend/src/context/SystemContext.jsx:271:      useDemoGps,
+frontend/src/context/SystemContext.jsx-272-      clearManualGps,
+frontend/src/context/SystemContext.jsx-273-      getCurrentPosition,
+--
+frontend/src/pages/Reports.jsx-65-        title="Reports"
+frontend/src/pages/Reports.jsx-66-        badge="OPS BRIEF"
+frontend/src/pages/Reports.jsx:67:        description="Exportable operations snapshot for municipal review and SIH demo walkthroughs."
+frontend/src/pages/Reports.jsx-68-        actions={
+frontend/src/pages/Reports.jsx-69-          <>
+--
+frontend/src/pages/Settings.jsx-15-        title="Settings"
+frontend/src/pages/Settings.jsx-16-        badge="OPERATOR"
+frontend/src/pages/Settings.jsx:17:        description="Theme, focused bus node and demo operator preferences. Stored locally in this browser."
+frontend/src/pages/Settings.jsx-18-      />
+frontend/src/pages/Settings.jsx-19-
+--
+frontend/src/pages/Settings.jsx-105-          <div className="flex items-center justify-between">
+frontend/src/pages/Settings.jsx-106-            <span style={{ color: 'var(--text-muted)' }}>Operator</span>
+frontend/src/pages/Settings.jsx:107:            <span>Demo Operator · SIH 2026</span>
+frontend/src/pages/Settings.jsx-108-          </div>
+frontend/src/pages/Settings.jsx-109-        </div>
+--
+frontend/src/pages/VideoProcess.jsx-213-          {mode === 'LIVE' && cameraActive && (
+frontend/src/pages/VideoProcess.jsx-214-            <div className="flex gap-6 text-[11px] font-mono p-3 rounded-lg bg-[var(--bg-elevated)] border border-[var(--border)]">
+frontend/src/pages/VideoProcess.jsx:215:              <span className="flex items-center gap-2"><Satellite className="w-3.5 h-3.5 text-cyan-400" /> GPS: {gpsSource === 'browser' ? '📍 Live' : gpsSource === 'manual' ? '📍 Manual' : gpsSource === 'demo' ? '📍 Demo' : gpsSource === 'denied' ? '🚫 Denied' : gpsSource === 'unavailable' ? '📵 Unavailable' : '🔍 Seeking'}</span>
+frontend/src/pages/VideoProcess.jsx-216-              <span className="flex items-center gap-2"><Cpu className="w-3.5 h-3.5 text-cyan-400" /> AI Engine: YOLOv8n</span>
+frontend/src/pages/VideoProcess.jsx-217-              {gpsLat !== null && gpsLng !== null && (
+--
+frontend/src/pages/VideoProcess.jsx-223-            <>
+frontend/src/pages/VideoProcess.jsx-224-              <div className="flex gap-4 text-[11px] font-mono p-2 rounded-lg bg-[var(--bg-elevated)] border border-[var(--border)]">
+frontend/src/pages/VideoProcess.jsx:225:                <span className="flex items-center gap-2"><Satellite className="w-3 h-3 text-cyan-400" /> GPS: {gpsSource === 'browser' ? '📍 Live' : gpsSource === 'manual' ? '📍 Manual' : gpsSource === 'demo' ? '📍 Demo' : gpsSource === 'denied' ? '🚫 Denied' : gpsLocked ? 'Locked' : '🔍 Seeking'}</span>
+frontend/src/pages/VideoProcess.jsx-226-                <span className="flex items-center gap-2">{gpsLat !== null && gpsLng !== null ? `${gpsLat.toFixed(4)}, ${gpsLng.toFixed(4)}` : '--'}</span>
+frontend/src/pages/VideoProcess.jsx-227-              </div>
+--
+backend/gps_service.py-5-  - ManualGPS: Fixed user-entered coordinates
+backend/gps_service.py-6-  - RouteGPS: Interpolates between start/end or waypoints
+backend/gps_service.py:7:  - SoftwareGPS: Simulated movement for demo (neutral default)
+backend/gps_service.py-8-  - HardwareGPS: Future interface for physical GPS modules
+backend/gps_service.py-9-
+--
+backend/gps_service.py-16-
+backend/gps_service.py-17-
+backend/gps_service.py:18:# Neutral default demo location (configurable, not personal)
+backend/gps_service.py:19:DEFAULT_DEMO_START = (0.0, 0.0)
+backend/gps_service.py:20:DEFAULT_DEMO_END = (0.001, 0.001)
+backend/gps_service.py-21-
+backend/gps_service.py-22-
+--
+backend/gps_service.py-117-class SoftwareGPS(GPSProvider):
+backend/gps_service.py-118-    """
+backend/gps_service.py:119:    Simulated movement for demo purposes.
+backend/gps_service.py-120-    Uses a neutral configurable default (0,0) area unless overridden.
+backend/gps_service.py-121-    """
+backend/gps_service.py:122:    def __init__(self, start_lat: float = DEFAULT_DEMO_START[0], start_lng: float = DEFAULT_DEMO_START[1],
+backend/gps_service.py-123-                 spread: float = 0.005):
+backend/gps_service.py-124-        self.start_lat = start_lat
+--
+backend/gps_service.py-140-            "start": (self.start_lat, self.start_lng),
+backend/gps_service.py-141-            "spread": self.spread,
+backend/gps_service.py:142:            "note": "Simulated demo movement — not real GPS",
+backend/gps_service.py-143-        }
+backend/gps_service.py-144-
+--
+backend/gps_service.py-166-    """
+backend/gps_service.py-167-    Factory — picks the best GPS provider from available config or kwargs.
+backend/gps_service.py:168:    Priority: explicit waypoints > start+end > start only > neutral demo.
+backend/gps_service.py-169-    """
+backend/gps_service.py-170-    if config is None:
+--
+backend/gps_service.py-179-            return ManualGPS(config.start_lat, config.start_lng, config.end_lat, config.end_lng)
+backend/gps_service.py-180-        return ManualGPS(config.start_lat, config.start_lng)
+backend/gps_service.py:181:    # Neutral demo fallback — no hardcoded personal location
+backend/gps_service.py-182-    return SoftwareGPS()
+--
+backend/video_processor.py-60-                              duration=round(duration, 2), status="processing")
+backend/video_processor.py-61-
+backend/video_processor.py:62:        # Setup GPS provider — prefer browser/manual coords from upload, else SoftwareGPS demo
+backend/video_processor.py-63-        has_browser_gps = video.get("gps_lat") is not None and video.get("gps_lng") is not None
+backend/video_processor.py-64-        gps = create_gps_provider(
+
+--- demo fallback ---
+frontend/src/context/SystemContext.jsx-45-  const [lastEvent, setLastEvent] = useState(null);
+frontend/src/context/SystemContext.jsx-46-
+frontend/src/context/SystemContext.jsx:47:  // Real GPS state (browser geolocation + manual/demo fallback)
+frontend/src/context/SystemContext.jsx-48-  const [gpsLat, setGpsLat] = useState(null);
+frontend/src/context/SystemContext.jsx-49-  const [gpsLng, setGpsLng] = useState(null);
+--
+frontend/src/context/SystemContext.jsx-226-        return 'Manual';
+frontend/src/context/SystemContext.jsx-227-      case 'demo':
+frontend/src/context/SystemContext.jsx:228:        return 'Demo Fallback';
+frontend/src/context/SystemContext.jsx-229-      case 'denied':
+frontend/src/context/SystemContext.jsx-230-        return 'Denied';
+--
+backend/gps_service.py-179-            return ManualGPS(config.start_lat, config.start_lng, config.end_lat, config.end_lng)
+backend/gps_service.py-180-        return ManualGPS(config.start_lat, config.start_lng)
+backend/gps_service.py:181:    # Neutral demo fallback — no hardcoded personal location
+backend/gps_service.py-182-    return SoftwareGPS()
+
+=== GPS COORDINATES SEARCH ===
+frontend/src/components/MapView.jsx-88-  incidents = [],
+frontend/src/components/MapView.jsx-89-  buses = [],
+frontend/src/components/MapView.jsx:90:  center = [22.5726, 88.3639],
+frontend/src/components/MapView.jsx-91-  zoom = 13,
+frontend/src/components/MapView.jsx-92-  selectedIncident = null,
+
+=== SEARCH COMPLETE ===

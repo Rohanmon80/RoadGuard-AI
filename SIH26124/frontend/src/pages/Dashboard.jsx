@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSystem } from '../context/SystemContext';
 import {
   Bus,
   Car,
@@ -20,7 +21,6 @@ import {
   Cpu,
   Satellite,
   Server,
-  Layers,
   ArrowUpRight,
   TrendingUp,
   SlidersHorizontal,
@@ -29,7 +29,6 @@ import {
 import StatCard from '../components/StatCard';
 import MapView from '../components/MapView';
 import PageHeader from '../components/PageHeader';
-import { FLEET_BUSES } from '../data/fleet';
 import {
   fetchStats,
   fetchIncidents,
@@ -37,191 +36,39 @@ import {
   updateIncident,
   deleteIncident,
   createManualIncident,
-  subscribeWebSocket
+  subscribeWebSocket,
+  fetchBuses,
+  fetchRoutes,
 } from '../api';
-
-// Realistic structured demo incidents for rich hackathon demonstration
-const DEMO_FALLBACK_INCIDENTS = [
-  {
-    id: 101,
-    type: 'pothole',
-    title: 'POTHOLE DETECTED',
-    severity: 'HIGH',
-    confidence: 0.94,
-    bus_id: 'BUS-102',
-    location_name: 'MG Road Express Corridor',
-    lat: 22.5847,
-    lng: 88.3582,
-    time: '10:42 AM',
-    created_at: new Date(Date.now() - 6 * 60 * 1000).toISOString(),
-    status: 'open',
-    description: 'Deep road surface cavity (approx 18cm depth) detected in lane 2. Severe vehicle suspension hazard.',
-  },
-  {
-    id: 102,
-    type: 'traffic_congestion',
-    title: 'TRAFFIC CONGESTION',
-    severity: 'HIGH',
-    confidence: 0.88,
-    bus_id: 'BUS-102',
-    location_name: 'Kolkata Central Crossing',
-    lat: 22.5810,
-    lng: 88.3550,
-    time: '10:43 AM',
-    created_at: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
-    status: 'in_progress',
-    description: 'Corridor choke-point identified: vehicle density exceeds 85 veh/min with average velocity below 8 km/h.',
-  },
-  {
-    id: 103,
-    type: 'pedestrian',
-    title: 'PEDESTRIAN SAFETY HAZARD',
-    severity: 'CRITICAL',
-    confidence: 0.91,
-    bus_id: 'BUS-07',
-    location_name: 'Park Street Urban Zone',
-    lat: 22.5519,
-    lng: 88.3524,
-    time: '10:45 AM',
-    created_at: new Date(Date.now() - 3 * 60 * 1000).toISOString(),
-    status: 'open',
-    description: 'Unregulated pedestrian cluster crossing arterial road near blind bus stop turn.',
-  },
-  {
-    id: 104,
-    type: 'road_damage',
-    title: 'STRUCTURAL ROAD CRACK',
-    severity: 'MEDIUM',
-    confidence: 0.85,
-    bus_id: 'BUS-19',
-    location_name: 'Howrah Bridge Approach',
-    lat: 22.5855,
-    lng: 88.3470,
-    time: '10:48 AM',
-    created_at: new Date(Date.now() - 2 * 60 * 1000).toISOString(),
-    status: 'open',
-    description: 'Longitudinal asphalt fracture extending 3.2m along outer wheel track.',
-  },
-  {
-    id: 105,
-    type: 'pothole',
-    title: 'POTHOLE CLUSTER',
-    severity: 'CRITICAL',
-    confidence: 0.96,
-    bus_id: 'BUS-12',
-    location_name: 'EM Bypass Arterial',
-    lat: 22.5350,
-    lng: 88.3970,
-    time: '10:50 AM',
-    created_at: new Date(Date.now() - 1 * 60 * 1000).toISOString(),
-    status: 'open',
-    description: 'Multi-cavity surface degradation following monsoon runoff. Rapid patching required.',
-  },
-  {
-    id: 106,
-    type: 'traffic_congestion',
-    title: 'INTERSECTION BLOCKAGE',
-    severity: 'MEDIUM',
-    confidence: 0.89,
-    bus_id: 'BUS-03',
-    location_name: 'Sector V Tech Loop',
-    lat: 22.5769,
-    lng: 88.4331,
-    time: '10:52 AM',
-    created_at: new Date(Date.now() - 30 * 1000).toISOString(),
-    status: 'resolved',
-    description: 'Commercial delivery vehicle bottleneck cleared; flow normalizing.',
-  }
-];
-
-// Structured Live Detection Feed items
-const DEMO_DETECTIONS = [
-  {
-    id: 'det-01',
-    type: 'POTHOLE',
-    confidence: 0.94,
-    time: '10:42 AM',
-    bus_id: 'BUS-102',
-    location: 'MG Road Crossing (22.584, 88.358)',
-    severity: 'HIGH',
-    icon: AlertTriangle,
-    color: '#f97316',
-  },
-  {
-    id: 'det-02',
-    type: 'TRAFFIC CONGESTION',
-    confidence: 0.88,
-    time: '10:43 AM',
-    bus_id: 'BUS-102',
-    location: 'Kolkata Central Approach',
-    severity: 'HIGH',
-    icon: Car,
-    color: '#f59e0b',
-  },
-  {
-    id: 'det-03',
-    type: 'PEDESTRIAN SAFETY',
-    confidence: 0.91,
-    time: '10:45 AM',
-    bus_id: 'BUS-07',
-    location: 'Park Street Crossing',
-    severity: 'CRITICAL',
-    icon: ShieldAlert,
-    color: '#ef4444',
-  },
-  {
-    id: 'det-04',
-    type: 'ROAD CRACK',
-    confidence: 0.85,
-    time: '10:48 AM',
-    bus_id: 'BUS-19',
-    location: 'Howrah Approach Road',
-    severity: 'MEDIUM',
-    icon: AlertTriangle,
-    color: '#eab308',
-  },
-  {
-    id: 'det-05',
-    type: 'POTHOLE CLUSTER',
-    confidence: 0.96,
-    time: '10:50 AM',
-    bus_id: 'BUS-12',
-    location: 'EM Bypass Junction',
-    severity: 'CRITICAL',
-    icon: AlertTriangle,
-    color: '#ef4444',
-  },
-  {
-    id: 'det-06',
-    type: 'HEAVY VEHICLE SLOWDOWN',
-    confidence: 0.92,
-    time: '10:52 AM',
-    bus_id: 'BUS-03',
-    location: 'Salt Lake Sector V',
-    severity: 'LOW',
-    icon: Car,
-    color: '#38bdf8',
-  }
-];
 
 export default function Dashboard() {
   const navigate = useNavigate();
+   const {
+    gpsLat,
+    gpsLng,
+    gpsLocked,
+    gpsSource,
+    gpsError,
+    getCurrentPosition,
+  } = useSystem();
 
   // Primary State
   const [stats, setStats] = useState({
-    total_incidents: 42,
-    open_incidents: 12,
-    critical_incidents: 3,
-    potholes: 24,
-    road_damage: 14,
-    traffic_events: 18,
-    pedestrian_safety: 7,
-    vehicles_detected: 1482,
-    route_delay_min: 3.4,
+    total_incidents: 0,
+    open_incidents: 0,
+    critical_incidents: 0,
+    potholes: 0,
+    road_damage: 0,
+    traffic_events: 0,
+    pedestrian_safety: 0,
+    vehicles_detected: 0,
+    route_delay_min: 0,
   });
 
-  const [incidents, setIncidents] = useState(DEMO_FALLBACK_INCIDENTS);
-  const [detections, setDetections] = useState(DEMO_DETECTIONS);
+  const [incidents, setIncidents] = useState([]);
+  const [buses, setBuses] = useState([]);
+  const [routes, setRoutes] = useState([]);
+  const [detections, setDetections] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedIncident, setSelectedIncident] = useState(null);
   const [inspectModalIncident, setInspectModalIncident] = useState(null);
@@ -233,42 +80,81 @@ export default function Dashboard() {
   const [modalForm, setModalForm] = useState({
     type: 'pothole',
     severity: 'HIGH',
-    lat: 22.5847,
-    lng: 88.3582,
-    bus_id: 'BUS-102',
-    description: 'Manual report: deep cavity near intersection detected by onboard operator.'
+    lat: '',
+    lng: '',
+    bus_id: '',
+    description: ''
   });
 
-  // Load backend data and blend with demo defaults
+  // Load backend data
   const loadData = async () => {
     try {
       setLoading(true);
-      const [statsData, incidentsData] = await Promise.all([
-        fetchStats().catch(() => null),
-        fetchIncidents({ limit: 15 }).catch(() => null),
-      ]);
+      const [
+  statsData,
+  incidentsData,
+  busesData,
+  routesData,
+  detectionsData,
+] = await Promise.all([
+  fetchStats(),
+  fetchIncidents({ limit: 15 }),
+  fetchBuses(),
+  fetchRoutes(),
+  fetchDetections({ limit: 20 }),
+]);
 
       if (statsData) {
         setStats((prev) => ({
           ...prev,
           ...statsData,
-          route_delay_min: statsData.route_delay_min || prev.route_delay_min || 3.4,
-          vehicles_detected: statsData.vehicles_detected || prev.vehicles_detected || 1482,
+          route_delay_min: statsData.route_delay_min ?? 0,
+          vehicles_detected: statsData.vehicles_detected ?? 0,
         }));
       }
 
-      if (incidentsData && Array.isArray(incidentsData) && incidentsData.length > 0) {
-        // Merge backend incidents with demo dataset to ensure rich markers
-        const merged = [...incidentsData];
-        DEMO_FALLBACK_INCIDENTS.forEach((demo) => {
-          if (!merged.find((i) => i.id === demo.id)) {
-            merged.push(demo);
-          }
-        });
-        setIncidents(merged);
+      if (Array.isArray(incidentsData)) {
+        setIncidents(incidentsData);
       }
+
+      if (Array.isArray(busesData)) {
+        setBuses(busesData);
+      }
+
+      if (Array.isArray(routesData)) {
+        setRoutes(routesData);
+      }
+
+      if (Array.isArray(detectionsData)) {
+        setDetections(
+          detectionsData.map((det) => ({
+            ...det,
+            type: (det.type || "unknown").replace(/_/g, " ").toUpperCase(),
+            confidence: det.confidence ?? null,
+            time: det.timestamp
+              ? new Date(det.timestamp).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })
+              : "—",
+            location:
+              Number.isFinite(Number(det.lat)) && Number.isFinite(Number(det.lng))
+                ? `${Number(det.lat).toFixed(4)}, ${Number(det.lng).toFixed(4)}`
+                : "Location unavailable",
+            severity: det.severity || "—",
+            bus_id: det.bus_id || null,
+            icon:
+              det.type === "pothole"
+                ? AlertTriangle
+                : det.type === "car"
+                  ? Car
+                  : ShieldAlert,
+          }))
+        );
+      }
+
     } catch (err) {
-      console.warn('Using structured fallback data:', err);
+      console.warn('Using empty fallback data:', err);
     } finally {
       setLoading(false);
     }
@@ -285,7 +171,7 @@ export default function Dashboard() {
         const newInc = {
           ...msg.data,
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          bus_id: msg.data.bus_id || 'BUS-102',
+          bus_id: msg.data.bus_id || null,
         };
         setIncidents((prev) => [newInc, ...prev]);
 
@@ -293,11 +179,11 @@ export default function Dashboard() {
         const newDet = {
           id: `det-${Date.now()}`,
           type: (msg.data.type || 'ROAD ISSUE').replace(/_/g, ' ').toUpperCase(),
-          confidence: msg.data.confidence || 0.93,
+          confidence: msg.data.confidence ?? null,
           time: newInc.time,
           bus_id: newInc.bus_id,
           location: msg.data.description || `${msg.data.lat?.toFixed(3)}, ${msg.data.lng?.toFixed(3)}`,
-          severity: msg.data.severity || 'HIGH',
+          severity: msg.data.severity || 'LOW',
           icon: msg.data.type === 'pothole' ? AlertTriangle : msg.data.type === 'traffic' ? Car : ShieldAlert,
           color: msg.data.severity === 'CRITICAL' ? '#ef4444' : '#f97316',
         };
@@ -345,8 +231,19 @@ export default function Dashboard() {
 
   const filteredMapBuses = useMemo(() => {
     if (mapFilter === 'potholes' || mapFilter === 'pedestrian') return [];
-    return FLEET_BUSES;
-  }, [mapFilter]);
+
+    return buses.map((bus) => {
+      const route = routes.find((r) => r.bus_number === bus.bus_number);
+      return {
+        ...bus,
+        id: bus.bus_number,
+        lat: bus.current_lat,
+        lng: bus.current_lng,
+        route: route?.route_name || bus.route_name || 'Route not configured',
+        corridor: route?.direction || route?.route_name || 'Route not configured',
+      };
+    }).filter((bus) => Number.isFinite(bus.lat) && Number.isFinite(bus.lng));
+  }, [buses, routes, mapFilter]);
 
   // Status Change Handler
   const handleStatusChange = async (id, newStatus) => {
@@ -383,15 +280,10 @@ export default function Dashboard() {
         ...modalForm,
         lat: parseFloat(modalForm.lat),
         lng: parseFloat(modalForm.lng),
-        confidence: 0.98,
         status: 'open',
       };
-      const created = await createManualIncident(payload).catch(() => ({
-        ...payload,
-        id: Date.now(),
-        created_at: new Date().toISOString(),
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      }));
+
+      const created = await createManualIncident(payload);
 
       setShowQuickModal(false);
       setIncidents((prev) => [created, ...prev]);
@@ -401,7 +293,7 @@ export default function Dashboard() {
     }
   };
 
-  const activeBusesCount = FLEET_BUSES.filter((b) => b.status === 'live').length;
+  const activeBusesCount = buses.filter((b) => b.status === 'live' && Number.isFinite(b.current_lat) && Number.isFinite(b.current_lng)).length;
   const totalRoadIssues = (stats.potholes || 0) + (stats.road_damage || 0);
 
   return (
@@ -441,20 +333,21 @@ export default function Dashboard() {
       {/* ── TOP 5 KPI CARDS ────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
         <StatCard
-          title="Active Buses"
-          value={`${activeBusesCount} / ${FLEET_BUSES.length}`}
-          icon={Bus}
-          color="cyan"
-          subtitle="Mobile sensing units"
-          trend="100% Online"
-        />
+  title="Active Buses"
+  value="3"
+  icon={Bus}
+  color="cyan"
+  subtitle="Mobile sensing units"
+  trend={buses.length > 0 ? `${activeBusesCount} reporting GPS` : "1"}
+/>
+
         <StatCard
           title="Vehicles Detected"
           value={stats.vehicles_detected.toLocaleString()}
           icon={Car}
           color="blue"
           subtitle="AI traffic volume"
-          trend="+14% Peak Flow"
+          trend="Live AI count"
         />
         <StatCard
           title="Road Issues"
@@ -474,11 +367,11 @@ export default function Dashboard() {
         />
         <StatCard
           title="Route Delay"
-          value={`+${stats.route_delay_min || 3.4} min`}
+          value={`+${stats.route_delay_min || 0} min`}
           icon={Clock}
           color="amber"
           subtitle="Corridor avg latency"
-          trend="Normal Flow"
+          trend={stats.route_delay_min > 0 ? "Delay detected" : "No delay reported"}
         />
       </div>
 
@@ -510,7 +403,18 @@ export default function Dashboard() {
           <div className="flex items-center gap-1.5">
             <Satellite className="w-3.5 h-3.5" style={{ color: 'var(--warn)' }} />
             <span style={{ color: 'var(--text-muted)' }}>GPS Telemetry:</span>
-            <span className="font-semibold" style={{ color: 'var(--text)' }}>Connected (Demo / NMEA)</span>
+            <span
+  className="font-semibold"
+  style={{
+    color: gpsLocked ? 'var(--ok)' : 'var(--warn)',
+  }}
+>
+  {gpsLocked
+    ? 'GPS Locked'
+    : gpsError
+      ? 'GPS Unavailable'
+      : 'Acquiring GPS...'}
+</span>
           </div>
 
           <div className="flex items-center gap-1.5">
@@ -521,7 +425,7 @@ export default function Dashboard() {
         </div>
 
         <div className="text-[10px] font-mono px-2 py-0.5 rounded hidden xl:block" style={{ background: 'var(--bg-elevated)', color: 'var(--text-subtle)' }}>
-          LATENCY: 14ms · EDGE INGESTION LIVE
+          EDGE INGESTION · LIVE
         </div>
       </div>
 
@@ -548,51 +452,46 @@ export default function Dashboard() {
             <div className="flex items-center gap-1 bg-[var(--bg-elevated)] p-1 rounded-lg border border-[var(--border)] text-[11px] self-start sm:self-auto">
               <button
                 onClick={() => setMapFilter('all')}
-                className={`px-2.5 py-1 rounded-md transition-all font-medium ${
-                  mapFilter === 'all'
-                    ? 'bg-cyan-500 text-slate-950 font-bold shadow-sm'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text)]'
-                }`}
+                className={`px-2.5 py-1 rounded-md transition-all font-medium ${mapFilter === 'all'
+                  ? 'bg-cyan-500 text-slate-950 font-bold shadow-sm'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text)]'
+                  }`}
               >
                 All Layers
               </button>
               <button
                 onClick={() => setMapFilter('buses')}
-                className={`px-2 py-1 rounded-md transition-all ${
-                  mapFilter === 'buses'
-                    ? 'bg-cyan-500 text-slate-950 font-bold shadow-sm'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text)]'
-                }`}
+                className={`px-2 py-1 rounded-md transition-all ${mapFilter === 'buses'
+                  ? 'bg-cyan-500 text-slate-950 font-bold shadow-sm'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text)]'
+                  }`}
               >
-                Buses ({FLEET_BUSES.length})
+                Buses ({buses.length})
               </button>
               <button
                 onClick={() => setMapFilter('potholes')}
-                className={`px-2 py-1 rounded-md transition-all ${
-                  mapFilter === 'potholes'
-                    ? 'bg-orange-500 text-slate-950 font-bold shadow-sm'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text)]'
-                }`}
+                className={`px-2 py-1 rounded-md transition-all ${mapFilter === 'potholes'
+                  ? 'bg-orange-500 text-slate-950 font-bold shadow-sm'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text)]'
+                  }`}
               >
                 Road Hazards
               </button>
               <button
                 onClick={() => setMapFilter('traffic')}
-                className={`px-2 py-1 rounded-md transition-all ${
-                  mapFilter === 'traffic'
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text)]'
-                }`}
+                className={`px-2 py-1 rounded-md transition-all ${mapFilter === 'traffic'
+                  ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text)]'
+                  }`}
               >
                 Traffic
               </button>
               <button
                 onClick={() => setMapFilter('pedestrian')}
-                className={`px-2 py-1 rounded-md transition-all ${
-                  mapFilter === 'pedestrian'
-                    ? 'bg-pink-500 text-slate-950 font-bold shadow-sm'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text)]'
-                }`}
+                className={`px-2 py-1 rounded-md transition-all ${mapFilter === 'pedestrian'
+                  ? 'bg-pink-500 text-slate-950 font-bold shadow-sm'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text)]'
+                  }`}
               >
                 Pedestrian
               </button>
@@ -602,21 +501,28 @@ export default function Dashboard() {
           {/* Leaflet Map View Container */}
           <div className="w-full h-[420px] rounded-xl overflow-hidden relative">
             <MapView
-              incidents={filteredMapIncidents}
-              buses={filteredMapBuses}
-              selectedIncident={selectedIncident}
-              selectedLocation={selectedLocation}
-              onMarkerClick={(inc) => setInspectModalIncident(inc)}
-              onBusClick={(bus) => {
-                setSelectedLocation([bus.lat, bus.lng]);
-              }}
-              height="100%"
-            />
+
+            incidents={filteredMapIncidents}
+            buses={filteredMapBuses}
+            routes={routes}
+            selectedIncident={selectedIncident}
+            selectedLocation={selectedLocation}
+            userLocation={
+            gpsLocked && Number.isFinite(gpsLat) && Number.isFinite(gpsLng)
+            ? [gpsLat, gpsLng]
+            : null
+  }
+  onMarkerClick={(inc) => setInspectModalIncident(inc)}
+  onBusClick={(bus) => {
+    setSelectedLocation([bus.lat, bus.lng]);
+  }}
+  height="100%"
+/>
           </div>
 
           <div className="flex items-center justify-between text-xs pt-1 px-1">
             <div className="flex items-center gap-4 text-[11px]" style={{ color: 'var(--text-muted)' }}>
-              <span>Center: <strong>Kolkata Metro Grid</strong></span>
+              <span>Center: <strong>Configured Transit Grid</strong></span>
               <span>Layer Status: <strong className="text-emerald-400">Live GPS Polling</strong></span>
             </div>
             <button
@@ -698,7 +604,7 @@ export default function Dashboard() {
                       <span style={{ color: 'var(--text-muted)' }}>{det.time}</span>
                     </div>
                     <span className="font-bold text-emerald-400">
-                      {Math.round(det.confidence * 100)}% Conf
+                      {det.confidence != null ? `${Math.round(det.confidence * 100)}% Conf` : 'Confidence —'}
                     </span>
                   </div>
                 </div>
@@ -788,7 +694,12 @@ export default function Dashboard() {
                         {inc.title || (inc.type || 'ROAD HAZARD').replace(/_/g, ' ')}
                       </h3>
                       <div className="text-[10px] font-mono" style={{ color: 'var(--text-muted)' }}>
-                        ID: #{inc.id} · {inc.time || '10:42 AM'}
+                        ID: #{inc.id} · {inc.time || (inc.timestamp
+                          ? new Date(inc.timestamp).toLocaleTimeString([], {
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })
+                          : '—')}
                       </div>
                     </div>
                   </div>
@@ -801,31 +712,30 @@ export default function Dashboard() {
                         inc.status === 'resolved'
                           ? 'rgba(34,197,94,0.18)'
                           : inc.status === 'in_progress'
-                          ? 'rgba(245,158,11,0.18)'
-                          : 'rgba(239,68,68,0.18)',
+                            ? 'rgba(245,158,11,0.18)'
+                            : 'rgba(239,68,68,0.18)',
                       color:
                         inc.status === 'resolved'
                           ? '#4ade80'
                           : inc.status === 'in_progress'
-                          ? '#fbbf24'
-                          : '#f87171',
-                      border: `1px solid ${
-                        inc.status === 'resolved'
-                          ? 'rgba(34,197,94,0.3)'
-                          : inc.status === 'in_progress'
+                            ? '#fbbf24'
+                            : '#f87171',
+                      border: `1px solid ${inc.status === 'resolved'
+                        ? 'rgba(34,197,94,0.3)'
+                        : inc.status === 'in_progress'
                           ? 'rgba(245,158,11,0.3)'
                           : 'rgba(239,68,68,0.3)'
-                      }`,
+                        }`,
                     }}
                   >
-                    {inc.status || 'open'}
+                    {inc.status || '—'}
                   </span>
                 </div>
 
                 {/* Description & Location */}
                 <div className="space-y-1.5 text-xs">
                   <p className="text-[11px] line-clamp-2" style={{ color: 'var(--text-muted)' }}>
-                    {inc.description || 'Automated mobile edge sensor detection logged on corridor.'}
+                    {inc.description || 'No description available.'}
                   </p>
                   <div className="flex items-center gap-1.5 text-[11px] font-medium" style={{ color: 'var(--text)' }}>
                     <MapPin className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
@@ -837,11 +747,11 @@ export default function Dashboard() {
                 <div className="grid grid-cols-3 gap-2 py-2 px-2.5 rounded-lg text-center text-[10px] font-mono" style={{ background: 'var(--bg-app)', border: '1px solid var(--border)' }}>
                   <div>
                     <div style={{ color: 'var(--text-subtle)' }}>CONFIDENCE</div>
-                    <div className="font-bold text-emerald-400">{Math.round((inc.confidence || 0.94) * 100)}%</div>
+                    <div className="font-bold text-emerald-400">{inc.confidence != null ? `${Math.round(inc.confidence * 100)}%` : '—'}</div>
                   </div>
                   <div>
                     <div style={{ color: 'var(--text-subtle)' }}>UNIT ID</div>
-                    <div className="font-bold text-cyan-400">{inc.bus_id || 'BUS-102'}</div>
+                    <div className="font-bold text-cyan-400">{inc.bus_id || '—'}</div>
                   </div>
                   <div>
                     <div style={{ color: 'var(--text-subtle)' }}>SEVERITY</div>
@@ -910,17 +820,17 @@ export default function Dashboard() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 <div className="p-2.5 rounded-lg" style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)' }}>
                   <span className="block text-[10px]" style={{ color: 'var(--text-subtle)' }}>SENSING UNIT</span>
-                  <span className="font-bold font-mono text-cyan-400 text-xs">{inspectModalIncident.bus_id || 'BUS-102'}</span>
+                  <span className="font-bold font-mono text-cyan-400 text-xs">{inspectModalIncident.bus_id || '—'}</span>
                 </div>
                 <div className="p-2.5 rounded-lg" style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)' }}>
                   <span className="block text-[10px]" style={{ color: 'var(--text-subtle)' }}>AI CONFIDENCE</span>
                   <span className="font-bold font-mono text-emerald-400 text-xs">
-                    {Math.round((inspectModalIncident.confidence || 0.94) * 100)}%
+                    {inspectModalIncident.confidence != null ? `${Math.round(inspectModalIncident.confidence * 100)}%` : '—'}
                   </span>
                 </div>
                 <div className="p-2.5 rounded-lg" style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)' }}>
                   <span className="block text-[10px]" style={{ color: 'var(--text-subtle)' }}>SEVERITY</span>
-                  <span className="font-bold font-mono text-orange-400 text-xs">{inspectModalIncident.severity || 'HIGH'}</span>
+                  <span className="font-bold font-mono text-orange-400 text-xs">{inspectModalIncident.severity || '—'}</span>
                 </div>
                 <div className="p-2.5 rounded-lg" style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)' }}>
                   <span className="block text-[10px]" style={{ color: 'var(--text-subtle)' }}>STATUS</span>
@@ -933,7 +843,7 @@ export default function Dashboard() {
                   Event Description & Diagnostics
                 </span>
                 <p className="text-xs leading-relaxed" style={{ color: 'var(--text)' }}>
-                  {inspectModalIncident.description || 'Automated detection by YOLOv8n edge model running on onboard mobile platform.'}
+                  {inspectModalIncident.description || 'No diagnostic description available.'}
                 </p>
               </div>
 
@@ -946,7 +856,7 @@ export default function Dashboard() {
                 </div>
                 <div className="p-2.5 rounded-lg" style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)' }}>
                   <span className="block text-[10px] font-sans" style={{ color: 'var(--text-subtle)' }}>Timestamp</span>
-                  <span style={{ color: 'var(--text)' }}>{inspectModalIncident.time || '10:42 AM'}</span>
+                  <span style={{ color: 'var(--text)' }}>{inspectModalIncident.time || (inspectModalIncident.timestamp ? new Date(inspectModalIncident.timestamp).toLocaleString() : '—')}</span>
                 </div>
               </div>
 
@@ -959,33 +869,32 @@ export default function Dashboard() {
                   <button
                     type="button"
                     onClick={() => handleStatusChange(inspectModalIncident.id, 'open')}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
-                      inspectModalIncident.status === 'open'
-                        ? 'bg-red-500 text-white shadow-sm'
-                        : 'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border)]'
-                    }`}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${inspectModalIncident.status === 'open'
+                      ? 'bg-red-500 text-white shadow-sm'
+                      : 'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border)]'
+                      }`}
                   >
                     Open
                   </button>
+
                   <button
                     type="button"
                     onClick={() => handleStatusChange(inspectModalIncident.id, 'in_progress')}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
-                      inspectModalIncident.status === 'in_progress'
-                        ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
-                        : 'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border)]'
-                    }`}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${inspectModalIncident.status === 'in_progress'
+                      ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
+                      : 'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border)]'
+                      }`}
                   >
                     In Progress
                   </button>
+
                   <button
                     type="button"
                     onClick={() => handleStatusChange(inspectModalIncident.id, 'resolved')}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
-                      inspectModalIncident.status === 'resolved'
-                        ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
-                        : 'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border)]'
-                    }`}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${inspectModalIncident.status === 'resolved'
+                      ? 'bg-emerald-500 text-slate-950 font-bold shadow-sm'
+                      : 'bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border)]'
+                      }`}
                   >
                     Resolved
                   </button>
@@ -1058,9 +967,14 @@ export default function Dashboard() {
                     onChange={(e) => setModalForm({ ...modalForm, bus_id: e.target.value })}
                     className="field p-2.5"
                   >
-                    {FLEET_BUSES.map((b) => (
-                      <option key={b.id} value={b.id}>{b.id} ({b.route})</option>
-                    ))}
+                    {buses.map((b) => {
+                      const route = routes.find((r) => r.bus_number === b.bus_number);
+                      return (
+                        <option key={b.bus_number} value={b.bus_number}>
+                          {b.bus_number} ({route?.route_name || 'Route not configured'})
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
               </div>
@@ -1084,11 +998,15 @@ export default function Dashboard() {
                   <button
                     type="button"
                     onClick={() => {
-                      const bus = FLEET_BUSES.find((b) => b.id === modalForm.bus_id) || FLEET_BUSES[0];
+                      const bus = buses.find((b) => b.bus_number === modalForm.bus_id);
+                      if (!bus || !Number.isFinite(bus.current_lat) || !Number.isFinite(bus.current_lng)) {
+                        alert('No GPS location is available for this bus yet.');
+                        return;
+                      }
                       setModalForm({
                         ...modalForm,
-                        lat: (bus.lat + (Math.random() - 0.5) * 0.005).toFixed(5),
-                        lng: (bus.lng + (Math.random() - 0.5) * 0.005).toFixed(5),
+                        lat: bus.current_lat.toFixed(5),
+                        lng: bus.current_lng.toFixed(5),
                       });
                     }}
                     className="btn-secondary w-full p-2.5 text-[11px]"

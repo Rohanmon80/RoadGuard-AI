@@ -1,12 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { useSystem } from '../context/SystemContext';
 import { Filter, RefreshCw, Navigation, Compass, MapPin } from 'lucide-react';
 import MapView from '../components/MapView';
-import { fetchIncidents, updateIncident, subscribeWebSocket } from '../api';
+
+import {
+  fetchIncidents,
+  fetchBuses,
+  fetchRoutes,
+  updateIncident,
+  subscribeWebSocket,
+} from '../api';
 
 export default function MapPage() {
+  const {
+    gpsLat, gpsLng, gpsLocked, gpsSource, gpsError, getCurrentPosition,
+  } = useSystem();
+
+  const userLocation =
+    gpsLocked && Number.isFinite(Number(gpsLat)) && Number.isFinite(Number(gpsLng))
+      ? [Number(gpsLat), Number(gpsLng)]
+      : null;
+
   const [incidents, setIncidents] = useState([]);
   const [filteredIncidents, setFilteredIncidents] = useState([]);
   const [selectedIncident, setSelectedIncident] = useState(null);
+  const [buses, setBuses] = useState([]);
+  const [routes, setRoutes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [severityFilter, setSeverityFilter] = useState('ALL');
   const [typeFilter, setTypeFilter] = useState('ALL');
@@ -15,10 +34,17 @@ export default function MapPage() {
   const loadIncidents = async () => {
     try {
       setLoading(true);
-      const data = await fetchIncidents({ limit: 200 });
-      setIncidents(data);
+      const [incidentData, busData, routeData] = await Promise.all([
+        fetchIncidents({ limit: 200 }),
+        fetchBuses().catch(() => []),
+        fetchRoutes().catch(() => []),
+      ]);
+
+      setIncidents(Array.isArray(incidentData) ? incidentData : []);
+      setBuses(Array.isArray(busData) ? busData : []);
+      setRoutes(Array.isArray(routeData) ? routeData : []);
     } catch (err) {
-      console.error('Failed to load incidents for map:', err);
+      console.error('Failed to load map telemetry:', err);
     } finally {
       setLoading(false);
     }
@@ -33,6 +59,20 @@ export default function MapPage() {
         setIncidents((prev) => prev.map((i) => (i.id === msg.data.id ? msg.data : i)));
       } else if (msg.event === 'incident_deleted') {
         setIncidents((prev) => prev.filter((i) => i.id !== msg.data.id));
+      } else if (msg.event === 'bus_location_update') {
+        setBuses((prev) =>
+          prev.map((bus) =>
+            bus.bus_number === msg.data.bus_number
+              ? {
+                  ...bus,
+                  current_lat: msg.data.latitude,
+                  current_lng: msg.data.longitude,
+                  location_source: msg.data.source || bus.location_source,
+                  last_updated: msg.data.timestamp || new Date().toISOString(),
+                }
+              : bus
+          )
+        );
       }
     });
     return () => unsubscribe();
@@ -97,6 +137,16 @@ export default function MapPage() {
             <option value="resolved">Resolved</option>
             <option value="closed">Closed</option>
           </select>
+          <button
+            onClick={getCurrentPosition}
+            className="btn-secondary px-2 py-1.5 flex items-center gap-1.5"
+            title={gpsError || 'Use current browser location'}
+          >
+            <MapPin className="w-3.5 h-3.5" style={{ color: userLocation ? 'var(--ok)' : 'var(--text-muted)' }} />
+            <span className="hidden sm:inline">
+              {userLocation ? `GPS ${gpsSource === 'manual' ? 'Manual' : 'Live'}` : 'Locate Me'}
+            </span>
+          </button>
           <button onClick={loadIncidents} className="btn-secondary p-1.5" title="Refresh">
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
           </button>
@@ -107,6 +157,18 @@ export default function MapPage() {
         <div className="lg:col-span-3 h-full rounded-xl overflow-hidden relative min-h-[360px]">
           <MapView
             incidents={filteredIncidents}
+            buses={buses.map((bus) => {
+              const route = routes.find((r) => r.bus_number === bus.bus_number);
+              return {
+                ...bus,
+                id: bus.bus_number,
+                lat: bus.current_lat,
+                lng: bus.current_lng,
+                route: route?.route_name || 'Route not configured',
+                corridor: route?.direction || route?.route_name || 'Route not configured',
+              };
+            }).filter((bus) => Number.isFinite(bus.lat) && Number.isFinite(bus.lng))}
+            routes={routes}
             selectedIncident={selectedIncident}
             onMarkerClick={(inc) => setSelectedIncident(inc)}
             height="100%"
@@ -157,7 +219,7 @@ export default function MapPage() {
                   <span className="text-[10px] font-medium" style={{ color: 'var(--text-muted)' }}>GPS Coordinates</span>
                   <div className="p-2 rounded font-mono text-[11px] flex items-center gap-1.5" style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)', color: 'var(--accent)' }}>
                     <MapPin className="w-3.5 h-3.5 shrink-0" />
-                    <span>{selectedIncident.lat.toFixed(5)}, {selectedIncident.lng.toFixed(5)}</span>
+                    <span>{Number.isFinite(Number(selectedIncident.lat)) ? Number(selectedIncident.lat).toFixed(5) : '—'}, {Number.isFinite(Number(selectedIncident.lng)) ? Number(selectedIncident.lng).toFixed(5) : '—'}</span>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-[11px]">
