@@ -742,7 +742,7 @@ frontend/src/pages/VideoProcess.jsx-217-              {gpsLat !== null && gpsLng
 frontend/src/pages/VideoProcess.jsx-218-                <span className="flex items-center gap-2 text-[10px]">{gpsLat.toFixed(6)}, {gpsLng.toFixed(6)}</span>
 --
 backend/ai_engine.py-1-"""
-backend/ai_engine.py-2-BusSense AI — AI Detection Engine
+backend/ai_engine.py-2-Smart city intelligence — AI Detection Engine
 backend/ai_engine.py:3:Uses YOLOv8n for vehicles and pedestrians; OpenCV fallback for road defects.
 backend/ai_engine.py-4-Configurable confidence thresholds and clean abstraction for future models.
 backend/ai_engine.py-5-"""

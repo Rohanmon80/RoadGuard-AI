@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
 /**
- * Custom SVG DivIcon generator for BusSense AI Command Center
+ * Custom SVG DivIcon generator for Smart city intelligence Command Center
  */
 function createMarkerIcon(item, isBus = false) {
   if (isBus) {
@@ -110,7 +110,7 @@ export default function MapView({
     const map = L.map(mapContainerRef.current, { center: initialCenter, zoom: initialZoom, zoomControl: false });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors | BusSense AI',
+      attribution: '&copy; OpenStreetMap contributors | Smart city intelligence',
       maxZoom: 19,
     }).addTo(map);
 

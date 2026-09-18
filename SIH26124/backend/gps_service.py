@@ -1,5 +1,5 @@
 """
-BusSense AI — GPS Abstraction Layer
+Smart city intelligence — GPS Abstraction Layer
 Provides multiple GPS strategies:
   - BrowserGPS: Uses browser navigator.geolocation (via frontend)
   - ManualGPS: Fixed user-entered coordinates

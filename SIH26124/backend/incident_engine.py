@@ -1,5 +1,5 @@
 """
-BusSense AI — Incident Engine
+Smart city intelligence — Incident Engine
 Converts detections into incidents with severity, GPS, and timestamps.
 Category-Aware:
   * VEHICLE   (car, bike, bus, truck) → tracked for analytics; no auto-incident

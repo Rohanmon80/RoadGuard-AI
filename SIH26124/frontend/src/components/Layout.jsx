@@ -57,7 +57,7 @@ function BrandMark({ compact = false }) {
       {!compact && (
         <div className="min-w-0">
           <h1 className="font-extrabold tracking-tight text-sm leading-tight" style={{ color: 'var(--text)' }}>
-            BUSSENSE <span style={{ color: 'var(--accent)' }}>AI</span>
+            Smart city <span style={{ color: 'var(--accent)' }}>intelligence</span>
           </h1>
           <p className="text-[10px] font-medium truncate" style={{ color: 'var(--text-muted)' }}>
             Mobile Urban Intelligence
@@ -107,7 +107,7 @@ export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [notifyOpen, setNotifyOpen] = useState(false);
   const location = useLocation();
-  const pageTitle = PAGE_TITLES[location.pathname] || 'BusSense AI';
+  const pageTitle = PAGE_TITLES[location.pathname] || 'Smart city intelligence';
 
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: 'var(--bg-app)', color: 'var(--text)' }}>
@@ -171,7 +171,7 @@ export default function Layout({ children }) {
 
             <div className="hidden md:block min-w-0">
               <p className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: 'var(--text-subtle)' }}>
-                BusSense AI
+                Smart city intelligence
               </p>
               <p className="text-sm font-bold truncate">{pageTitle}</p>
             </div>

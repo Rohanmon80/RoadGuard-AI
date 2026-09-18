@@ -803,7 +803,7 @@ export default function Dashboard() {
                     Incident #{inspectModalIncident.id} Details
                   </h3>
                   <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                    BusSense AI Telemetry Verification
+                    Smart city intelligence
                   </p>
                 </div>
               </div>

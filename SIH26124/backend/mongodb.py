@@ -1,5 +1,5 @@
 """
-MongoDB Atlas persistence layer for BusSense AI.
+MongoDB Atlas persistence layer for Smart city intelligence.
 Collection: bus_details (and potholes if separate).
 """
 import os

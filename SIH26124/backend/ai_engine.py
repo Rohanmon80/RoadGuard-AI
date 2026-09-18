@@ -1,5 +1,5 @@
 """
-BusSense AI — AI Detection Engine
+Smart city intelligence — AI Detection Engine
 
 YOLO object detection + optional pothole model + OpenCV fallback.
 
@@ -972,6 +972,6 @@ def create_ai_engine(
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     engine = AIDetectionEngine()
-    print("BusSense AI Detection Engine")
+    print("Smart city intelligence Detection Engine")
     print("============================")
     print(engine.get_engine_info())
